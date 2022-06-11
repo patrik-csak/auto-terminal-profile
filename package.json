@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "commander": "^9.3.0",
+    "execa": "^6.1.0",
     "read-pkg-up": "^9.1.0"
   },
   "devDependencies": {

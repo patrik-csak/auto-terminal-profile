@@ -12,6 +12,9 @@
   "license": "MIT",
   "author": "Patrik Csak <p@trikcsak.com>",
   "repository": "github:ptrkcsk/auto-terminal-profile",
+  "devDependencies": {
+    "xo": "^0.50.0"
+  },
   "engines": {
     "node": "^16"
   },

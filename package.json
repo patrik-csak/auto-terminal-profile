@@ -1,0 +1,9 @@
+{
+  "name": "termode",
+  "version": "0.0.0",
+  "description": "Switch macOS terminal profile based on system dark / light mode",
+  "keywords": ["macos", "terminal", "light mode", "dark mode", "profile"],
+  "license": "MIT",
+  "author": "Patrik Csak <p@trikcsak.com>",
+  "repository": "github:ptrkcsk/termode"
+}

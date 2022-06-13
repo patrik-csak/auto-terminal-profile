@@ -1,0 +1,3 @@
+[submodule "dark-mode-notify"]
+	path = dark-mode-notify
+	url = https://github.com/bouk/dark-mode-notify.git

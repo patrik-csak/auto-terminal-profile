@@ -1,7 +1,9 @@
 #! /usr/bin/env node
 
 import {program} from 'commander';
+import darkMode from 'dark-mode';
 import {readPackageUp} from 'read-pkg-up';
+import {setTerminalProfile} from 'terminal-profile';
 import {config} from './config.js';
 
 const {packageJson} = await readPackageUp();
@@ -40,7 +42,9 @@ program
 		if (darkProfile) config.darkProfile = darkProfile;
 		if (lightProfile) config.lightProfile = lightProfile;
 
-		// TODO : enable switching
+		// TODO :
+		//   - make launchagent plist file
+		//   - copy plist file to `~/Library/LaunchAgents/ke.bou.dark-mode-notify.plist`
 	});
 
 for (const mode of ['dark', 'light']) {
@@ -60,6 +64,25 @@ program
 		console.log('automatic switching : (disabled|enabled) (TODO)'); // TODO
 		console.log(`dark profile : ${config.darkProfile}`);
 		console.log(`light profile : ${config.lightProfile}`);
+	});
+
+program
+	.command('update-profile')
+	.description(
+		'Update the profile of currently running Terminal windows / tabs',
+	)
+	.action(async () => {
+		if (!config.darkProfile) {
+			throw new Error('Dark profile not set');
+		}
+
+		if (!config.lightProfile) {
+			throw new Error('Light profile not set');
+		}
+
+		const mode = (await darkMode.isEnabled()) ? 'dark' : 'light';
+
+		await setTerminalProfile(config[`${mode}Profile`]);
 	});
 
 program.parse();

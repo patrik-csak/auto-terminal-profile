@@ -1,12 +1,22 @@
 #! /usr/bin/env node
 
+import {readFile, writeFile} from 'node:fs/promises';
+import {fileURLToPath} from 'node:url';
 import {program} from 'commander';
 import darkMode from 'dark-mode';
+import envPaths from 'env-paths';
+import {execa} from 'execa';
+import pupa from 'pupa';
 import {readPackageUp} from 'read-pkg-up';
 import {setTerminalProfile} from 'terminal-profile';
+import untildify from 'untildify';
 import {config} from './config.js';
 
 const {packageJson} = await readPackageUp();
+
+const launchAgentPlistFilePath = untildify(
+	'~/Library/LaunchAgents/ke.bou.dark-mode-notify.plist',
+);
 
 program
 	.name(packageJson.name)
@@ -26,7 +36,7 @@ program
 		'--light-profile <profile>',
 		'light profile name, for example "One Light"',
 	)
-	.action(({darkProfile, lightProfile}) => {
+	.action(async ({darkProfile, lightProfile}) => {
 		if (!darkProfile && !config.darkProfile) {
 			throw new Error(
 				`Dark profile must be specified with --dark-profile or previously set with \`${packageJson.name} set-dark-mode\``,
@@ -42,9 +52,26 @@ program
 		if (darkProfile) config.darkProfile = darkProfile;
 		if (lightProfile) config.lightProfile = lightProfile;
 
-		// TODO :
-		//   - make launchagent plist file
-		//   - copy plist file to `~/Library/LaunchAgents/ke.bou.dark-mode-notify.plist`
+		const {log: logPath} = envPaths(packageJson.name);
+
+		const launchAgentPlistFileContents = pupa(
+			await readFile(new URL('launch-agent.xml', import.meta.url), {
+				encoding: 'utf8',
+			}),
+			{
+				autoTerminalProfilePath: fileURLToPath(
+					new URL('cli.js', import.meta.url),
+				),
+				darkModeNotifyPath: fileURLToPath(
+					new URL('dark-mode-notify.swift', import.meta.url),
+				),
+				logPath,
+			},
+		);
+
+		await writeFile(launchAgentPlistFilePath, launchAgentPlistFileContents);
+
+		await execa('launchctl', ['load', '-w', launchAgentPlistFilePath]);
 	});
 
 for (const mode of ['dark', 'light']) {

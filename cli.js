@@ -37,8 +37,8 @@ program
 			);
 		}
 
-		config.darkProfile = darkProfile;
-		config.lightProfile = lightProfile;
+		if (darkProfile) config.darkProfile = darkProfile;
+		if (lightProfile) config.lightProfile = lightProfile;
 
 		// TODO : enable switching
 	});

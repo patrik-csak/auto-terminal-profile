@@ -52,8 +52,6 @@ program
 		if (darkProfile) config.darkProfile = darkProfile;
 		if (lightProfile) config.lightProfile = lightProfile;
 
-		const {log: logPath} = envPaths(packageJson.name);
-
 		const launchAgentPlistFileContents = pupa(
 			await readFile(new URL('launch-agent.xml', import.meta.url), {
 				encoding: 'utf8',
@@ -65,7 +63,7 @@ program
 				darkModeNotifyPath: fileURLToPath(
 					new URL('dark-mode-notify.swift', import.meta.url),
 				),
-				logPath,
+				logPath: envPaths(packageJson.name).log,
 			},
 		);
 

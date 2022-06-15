@@ -12,7 +12,7 @@ import {setTerminalProfile} from 'terminal-profile';
 import untildify from 'untildify';
 import {config} from './config.js';
 
-const {packageJson} = await readPackageUp();
+const {packageJson} = await readPackageUp({cwd: new URL('.', import.meta.url)});
 
 const launchAgentPlistFilePath = untildify(
 	'~/Library/LaunchAgents/ke.bou.dark-mode-notify.plist',

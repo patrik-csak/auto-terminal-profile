@@ -1,6 +1,9 @@
 import Conf from 'conf';
+import {readPackageUp} from 'read-pkg-up';
 
-const conf = new Conf();
+const {packageJson} = await readPackageUp({cwd: new URL('.', import.meta.url)});
+
+const conf = new Conf({projectName: packageJson.name});
 
 class Config {
 	keys = {

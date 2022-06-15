@@ -1,27 +1,33 @@
 #! /usr/bin/env node
 
-import {readFile, writeFile} from 'node:fs/promises';
-import {fileURLToPath} from 'node:url';
 import {program} from 'commander';
 import darkMode from 'dark-mode';
-import envPaths from 'env-paths';
-import {execa} from 'execa';
-import pupa from 'pupa';
 import {readPackageUp} from 'read-pkg-up';
 import {setTerminalProfile} from 'terminal-profile';
-import untildify from 'untildify';
 import {config} from './config.js';
+import {
+	disableAutomaticSwitching,
+	enableAutomaticSwitching,
+	isAutomaticSwitchingEnabled,
+} from './functions/index.js';
 
 const {packageJson} = await readPackageUp({cwd: new URL('.', import.meta.url)});
-
-const launchAgentPlistFilePath = untildify(
-	'~/Library/LaunchAgents/ke.bou.dark-mode-notify.plist',
-);
 
 program
 	.name(packageJson.name)
 	.description(packageJson.description)
 	.version(packageJson.version);
+
+program
+	.command('disable')
+	.description(
+		'Disable automatic macOS Terminal profile switching based on system dark / light mode',
+	)
+	.action(async () => {
+		await disableAutomaticSwitching()
+
+		console.log('Automatic switching disabled')
+	});
 
 program
 	.command('enable')
@@ -52,25 +58,9 @@ program
 		if (darkProfile) config.darkProfile = darkProfile;
 		if (lightProfile) config.lightProfile = lightProfile;
 
-		const launchAgentPlistFileContents = pupa(
-			await readFile(new URL('launch-agent.xml', import.meta.url), {
-				encoding: 'utf8',
-			}),
-			{
-				autoTerminalProfilePath: fileURLToPath(
-					new URL('cli.js', import.meta.url),
-				),
-				darkModeNotifyPath: fileURLToPath(
-					new URL('dark-mode-notify.swift', import.meta.url),
-				),
-				logPath: envPaths(packageJson.name).log,
-				path: process.env.PATH,
-			},
-		);
+		await enableAutomaticSwitching();
 
-		await writeFile(launchAgentPlistFilePath, launchAgentPlistFileContents);
-
-		await execa('launchctl', ['load', '-w', launchAgentPlistFilePath]);
+		console.log('Automatic switching enabled')
 	});
 
 for (const mode of ['dark', 'light']) {
@@ -80,14 +70,20 @@ for (const mode of ['dark', 'light']) {
 		.argument('<profile>')
 		.action((profile) => {
 			config[`${mode}Profile`] = profile;
+
+			console.log(`${mode} mode profile set to '${profile}'`)
 		});
 }
 
 program
 	.command('status')
-	.description('Show configuration')
-	.action(() => {
-		console.log('automatic switching : (disabled|enabled) (TODO)'); // TODO
+	.description('Show status and configuration')
+	.action(async () => {
+		console.log(
+			`automatic switching : ${
+				(await isAutomaticSwitchingEnabled()) ? 'enabled' : 'disabled'
+			}`,
+		);
 		console.log(`dark profile : ${config.darkProfile}`);
 		console.log(`light profile : ${config.lightProfile}`);
 	});

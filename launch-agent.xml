@@ -14,7 +14,8 @@
     <key>ProgramArguments</key>
     <array>
         <string>{darkModeNotifyPath}</string>
-        <string>{autoTerminalProfilePath} update-profile</string>
+        <string>{autoTerminalProfilePath}</string>
+        <string>update-profile</string>
     </array>
 </dict>
 </plist>

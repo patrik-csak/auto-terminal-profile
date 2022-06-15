@@ -64,6 +64,7 @@ program
 					new URL('dark-mode-notify.swift', import.meta.url),
 				),
 				logPath: envPaths(packageJson.name).log,
+				path: process.env.PATH,
 			},
 		);
 

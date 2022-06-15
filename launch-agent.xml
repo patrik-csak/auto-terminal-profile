@@ -11,6 +11,11 @@
     <string>{logPath}/dark-mode-notify-stderr.log</string>
     <key>StandardOutPath</key>
     <string>{logPath}/dark-mode-notify-stdout.log</string>
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>{path}</string>
+    </dict>
     <key>ProgramArguments</key>
     <array>
         <string>{darkModeNotifyPath}</string>

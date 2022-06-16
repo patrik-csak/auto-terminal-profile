@@ -14,7 +14,8 @@
   "bin": "./cli.js",
   "repository": "github:ptrkcsk/auto-terminal-profile",
   "scripts": {
-    "format": "xo --fix"
+    "format": "xo --fix",
+    "test": "xo"
   },
   "dependencies": {
     "commander": "^9.3.0",

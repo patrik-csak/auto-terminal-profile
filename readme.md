@@ -4,6 +4,10 @@ Automatically switch the macOS Terminal profile based on the system-wide dark / 
 
 ![auto-terminal-profile demonstration screen recording](./documentation/demo.gif)
 
+## Prerequisites
+
+- [Node.js](https://nodejs.org/en/) 14-16
+
 ## Installation
 
 ```sh

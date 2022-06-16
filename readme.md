@@ -11,7 +11,7 @@ Automatically switch the macOS Terminal profile based on the system-wide dark / 
 ## Installation
 
 ```sh
-npm install auto-terminal-profile
+npm install --global auto-terminal-profile
 ```
 
 ## Usage

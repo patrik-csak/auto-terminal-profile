@@ -23,8 +23,7 @@ program
 	.action(disable);
 
 program
-	.command(
-		'enable')
+	.command('enable')
 	.description(
 		'Enable automatic macOS Terminal profile switching based on system dark / light mode',
 	)

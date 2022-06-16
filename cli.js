@@ -22,9 +22,9 @@ program
 		'Disable automatic macOS Terminal profile switching based on system dark / light mode',
 	)
 	.action(async () => {
-		await disableAutomaticSwitching()
+		await disableAutomaticSwitching();
 
-		console.log('Automatic switching disabled')
+		console.log('Automatic switching disabled');
 	});
 
 program
@@ -58,7 +58,7 @@ program
 
 		await enableAutomaticSwitching();
 
-		console.log('Automatic switching enabled')
+		console.log('Automatic switching enabled');
 	});
 
 for (const mode of ['dark', 'light']) {
@@ -69,7 +69,7 @@ for (const mode of ['dark', 'light']) {
 		.action((profile) => {
 			config[`${mode}Profile`] = profile;
 
-			console.log(`${mode} mode profile set to '${profile}'`)
+			console.log(`${mode} mode profile set to '${profile}'`);
 		});
 }
 

@@ -2,7 +2,6 @@
 
 import {program} from 'commander';
 import darkMode from 'dark-mode';
-import {readPackageUp} from 'read-pkg-up';
 import {setTerminalProfile} from 'terminal-profile';
 import {config} from './config.js';
 import {
@@ -10,8 +9,7 @@ import {
 	enableAutomaticSwitching,
 	isAutomaticSwitchingEnabled,
 } from './functions/index.js';
-
-const {packageJson} = await readPackageUp({cwd: new URL('.', import.meta.url)});
+import {packageJson} from './constants/index.js';
 
 program
 	.name(packageJson.name)

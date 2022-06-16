@@ -1,6 +1,5 @@
 #! /usr/bin/env node
 
-import {fileURLToPath} from 'node:url';
 import {program} from 'commander';
 import {packageJson} from './constants/index.js';
 import {
@@ -14,8 +13,7 @@ import {
 program
 	.name(packageJson.name)
 	.description(packageJson.description)
-	.version(packageJson.version)
-	.executableDir(fileURLToPath(new URL('commands', import.meta.url)));
+	.version(packageJson.version);
 
 program
 	.command('disable')

@@ -1,8 +1,8 @@
-import {config} from "../config.js";
-import darkMode from "dark-mode";
-import {setTerminalProfile} from "terminal-profile";
+import darkMode from 'dark-mode';
+import {setTerminalProfile} from 'terminal-profile';
+import {config} from '../config.js';
 
-export async function updateProfile () {
+export async function updateProfile() {
 	if (!config.darkProfile) {
 		throw new Error('Dark profile not set');
 	}

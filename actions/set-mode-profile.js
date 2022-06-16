@@ -1,4 +1,4 @@
-import {config} from "../config.js";
+import {config} from '../config.js';
 
 export function setModeProfile({mode, profile}) {
 	config[`${mode}Profile`] = profile;

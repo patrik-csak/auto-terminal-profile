@@ -1,7 +1,7 @@
-import {isAutomaticSwitchingEnabled} from "../functions/index.js";
-import {config} from "../config.js";
+import {isAutomaticSwitchingEnabled} from '../functions/index.js';
+import {config} from '../config.js';
 
-export async function status () {
+export async function status() {
 	console.log(
 		`automatic switching : ${
 			(await isAutomaticSwitchingEnabled()) ? 'enabled' : 'disabled'

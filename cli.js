@@ -3,7 +3,13 @@
 import {fileURLToPath} from 'node:url';
 import {program} from 'commander';
 import {packageJson} from './constants/index.js';
-import {disable, enable, setModeProfile, status, updateProfile} from "./actions/index.js";
+import {
+	disable,
+	enable,
+	setModeProfile,
+	status,
+	updateProfile,
+} from './actions/index.js';
 
 program
 	.name(packageJson.name)
@@ -19,8 +25,11 @@ program
 	.action(disable);
 
 program
-	.command('enable')
-	.description( 'Enable automatic macOS Terminal profile switching based on system dark / light mode')
+	.command(
+		'enable')
+	.description(
+		'Enable automatic macOS Terminal profile switching based on system dark / light mode',
+	)
 	.option(
 		'--dark-profile <profile>',
 		'dark profile name, for example "One Dark"',

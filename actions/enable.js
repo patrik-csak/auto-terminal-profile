@@ -1,6 +1,6 @@
-import {config} from "../config.js";
-import {packageJson} from "../constants/index.js";
-import {enableAutomaticSwitching} from "../functions/index.js";
+import {config} from '../config.js';
+import {packageJson} from '../constants/index.js';
+import {enableAutomaticSwitching} from '../functions/index.js';
 
 export async function enable({darkProfile, lightProfile}) {
 	if (!darkProfile && !config.darkProfile) {

@@ -11,6 +11,7 @@
   ],
   "license": "MIT",
   "author": "Patrik Csak <p@trikcsak.com>",
+  "funding": "https://www.buymeacoffee.com/patrikcsak",
   "bin": "./cli.js",
   "repository": "github:ptrkcsk/auto-terminal-profile",
   "scripts": {

@@ -13,7 +13,7 @@
   "author": "Patrik Csak <p@trikcsak.com>",
   "funding": "https://www.buymeacoffee.com/patrikcsak",
   "bin": "./cli.js",
-  "repository": "github:ptrkcsk/auto-terminal-profile",
+  "repository": "github:patrik-csak/auto-terminal-profile",
   "scripts": {
     "format": "xo --fix",
     "test": "xo"

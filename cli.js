@@ -18,14 +18,14 @@ program
 program
 	.command('disable')
 	.description(
-		'Disable automatic macOS Terminal profile switching based on system dark / light mode',
+		'disable automatic macOS Terminal profile switching based on system dark / light mode',
 	)
 	.action(disable);
 
 program
 	.command('enable')
 	.description(
-		'Enable automatic macOS Terminal profile switching based on system dark / light mode',
+		'enable automatic macOS Terminal profile switching based on system dark / light mode',
 	)
 	.option(
 		'--dark-profile <profile>',
@@ -40,20 +40,20 @@ program
 for (const mode of ['dark', 'light']) {
 	program
 		.command(`set-${mode}-profile`)
-		.description(`Set the Terminal profile to use in ${mode} mode`)
+		.description(`set the Terminal profile to use in ${mode} mode`)
 		.argument('<profile>')
 		.action((profile) => setModeProfile({mode, profile}));
 }
 
 program
 	.command('status')
-	.description('Show status and configuration')
+	.description('show status and configuration')
 	.action(status);
 
 program
 	.command('update-profile')
 	.description(
-		'Update the profile of currently running Terminal windows / tabs',
+		'update the profile of currently running Terminal windows / tabs',
 	)
 	.action(updateProfile);
 

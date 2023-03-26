@@ -1,5 +1,3 @@
-#! /usr/bin/env node
-
 import {disableAutomaticSwitching} from '../functions/index.js';
 
 export async function disable() {

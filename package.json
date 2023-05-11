@@ -19,21 +19,21 @@
     "test": "xo"
   },
   "dependencies": {
-    "commander": "^9.3.0",
-    "conf": "^10.1.2",
+    "commander": "^10.0.1",
+    "conf": "^11.0.1",
     "dark-mode": "^4.0.0",
     "env-paths": "^3.0.0",
-    "execa": "^6.1.0",
+    "execa": "^7.1.1",
     "pupa": "^3.1.0",
     "read-pkg-up": "^9.1.0",
-    "terminal-profile": "^1.2.0",
+    "terminal-profile": "^2.0.0",
     "untildify": "^4.0.0"
   },
   "devDependencies": {
-    "xo": "^0.53.1"
+    "xo": "^0.54.2"
   },
   "engines": {
-    "node": ">=14 <=19"
+    "node": ">=16 <=20"
   },
   "os": [
     "darwin"

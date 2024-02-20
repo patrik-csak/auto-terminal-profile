@@ -9,15 +9,16 @@
     "dark mode",
     "profile"
   ],
+  "repository": "github:patrik-csak/auto-terminal-profile",
+  "funding": "https://www.buymeacoffee.com/patrikcsak",
   "license": "MIT",
   "author": "Patrik Csak <p@trikcsak.com>",
-  "funding": "https://www.buymeacoffee.com/patrikcsak",
+  "type": "module",
   "bin": "./cli.js",
-  "repository": "github:patrik-csak/auto-terminal-profile",
   "scripts": {
-    "format": "xo --fix",
+    "format": "xo --fix && sort-package-json",
     "postinstall": "cd dark-mode-notify && make build",
-    "test": "xo"
+    "test": "xo && sort-package-json --check"
   },
   "dependencies": {
     "commander": "^11.0.0",
@@ -30,6 +31,7 @@
     "untildify": "^5.0.0"
   },
   "devDependencies": {
+    "sort-package-json": "^2.7.0",
     "xo": "^0.54.2"
   },
   "engines": {
@@ -37,6 +39,5 @@
   },
   "os": [
     "darwin"
-  ],
-  "type": "module"
+  ]
 }

@@ -15,7 +15,10 @@ export async function getLaunchAgentPlistFileContents() {
 				new URL('../cli.js', import.meta.url),
 			),
 			darkModeNotifyPath: fileURLToPath(
-				new URL('../dark-mode-notify/dark-mode-notify.swift', import.meta.url),
+				new URL(
+					'../dark-mode-notify/.build/release/dark-mode-notify',
+					import.meta.url,
+				),
 			),
 			logPath: envPaths(packageJson.name).log,
 			path: process.env.PATH,

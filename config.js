@@ -1,5 +1,5 @@
 import Conf from 'conf';
-import {readPackageUp} from 'read-pkg-up';
+import {readPackageUp} from 'read-package-up';
 
 const {packageJson} = await readPackageUp({cwd: new URL('.', import.meta.url)});
 

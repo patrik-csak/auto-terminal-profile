@@ -32,4 +32,4 @@ auto-terminal-profile --help
 
 ## Acknowledgements
 
-Thanks to [Fatih Arslan](https://github.com/fatih) for his article [*Automatic dark mode for terminal applications*](https://arslan.io/2021/02/15/automatic-dark-mode-for-terminal-applications/) and [Bouke van der Bijl](https://github.com/bouk) for his project [dark-mode-notify](https://github.com/bouk/dark-mode-notify), which this project uses
+Thanks [Bouke van der Bijl](https://bou.ke) for his project [dark-mode-notify](https://github.com/bouk/dark-mode-notify), which this project depends on

@@ -1,5 +1,4 @@
 .gitmodules
 .idea
 documentation
-Makefile
 xo.config.cjs

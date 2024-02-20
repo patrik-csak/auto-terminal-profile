@@ -6,7 +6,7 @@ Automatically switch the macOS Terminal profile based on the system-wide dark / 
 
 ## Prerequisites
 
-- [Node.js](https://nodejs.org/en/) 16–20
+- [Node.js](https://nodejs.org/en/) 18–20
 
 ## Installation
 

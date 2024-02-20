@@ -1,7 +1,7 @@
 {
   "name": "auto-terminal-profile",
   "version": "2.1.0",
-  "description": "Automatically switch the macOS Terminal profile based on the system-wide dark / light appearance mode",
+  "description": "Automatically switch macOS Terminal profile when system dark / light mode changes",
   "keywords": [
     "macos",
     "terminal",
@@ -9,12 +9,10 @@
     "dark mode",
     "profile"
   ],
-  "repository": "github:patrik-csak/auto-terminal-profile",
-  "funding": "https://www.buymeacoffee.com/patrikcsak",
   "license": "MIT",
-  "author": "Patrik Csak <p@trikcsak.com>",
-  "type": "module",
+  "author": "Patrik Csak <p@trikcsak.com> (https://patrikcsak.com)",
   "bin": "./cli.js",
+  "repository": "github:patrik-csak/auto-terminal-profile",
   "scripts": {
     "format": "xo --fix && sort-package-json",
     "postinstall": "cd dark-mode-notify && make build",
@@ -35,9 +33,10 @@
     "xo": "^0.54.2"
   },
   "engines": {
-    "node": ">=16 <=20"
+    "node": ">=18 <=20"
   },
   "os": [
     "darwin"
-  ]
+  ],
+  "type": "module"
 }

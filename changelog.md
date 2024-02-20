@@ -5,13 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [v3.0.1](https://github.com/ptrkcsk/terminal-profile/compare/v3.0.0...v3.0.1) – 2024-02-20
+## [v3.0.1](https://github.com/patrik-csak/terminal-profile/compare/v3.0.0...v3.0.1) – 2024-02-20
 
 ### Fixed
 
 - Broken post-install compilation step
 
-## [v3.0.0](https://github.com/ptrkcsk/terminal-profile/compare/v2.1.0...v3.0.0) – 2024-02-19
+## [v3.0.0](https://github.com/patrik-csak/terminal-profile/compare/v2.1.0...v3.0.0) – 2024-02-19
 
 ### Removed
 
@@ -21,13 +21,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Issue causing `auto-terminal-profile` to silently fail on macOS Sonoma
 
-## [v2.1.0](https://github.com/ptrkcsk/terminal-profile/compare/v2.0.0...v2.1.0) – 2023-07-04
+## [v2.1.0](https://github.com/patrik-csak/terminal-profile/compare/v2.0.0...v2.1.0) – 2023-07-04
 
 ### Changed
 
 - Update dependencies
 
-## [2.0.0](https://github.com/ptrkcsk/terminal-profile/compare/v1.1.1...v2.0.0) – 2023-05-10
+## [2.0.0](https://github.com/patrik-csak/terminal-profile/compare/v1.1.1...v2.0.0) – 2023-05-10
 
 ### Added
 

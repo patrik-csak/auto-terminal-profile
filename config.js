@@ -3,7 +3,7 @@ import {readPackageUp} from 'read-package-up';
 
 const {packageJson} = await readPackageUp({cwd: new URL('.', import.meta.url)});
 
-const conf = new Conf({projectName: packageJson.name});
+const config_ = new Conf({projectName: packageJson.name});
 
 class Config {
 	keys = {
@@ -15,28 +15,28 @@ class Config {
 	 * @return {string}
 	 */
 	get darkProfile() {
-		return conf.get(this.keys.darkProfile);
+		return config_.get(this.keys.darkProfile);
 	}
 
 	/**
 	 * @param {string} profile
 	 */
 	set darkProfile(profile) {
-		conf.set(this.keys.darkProfile, profile);
+		config_.set(this.keys.darkProfile, profile);
 	}
 
 	/**
 	 * @return {string}
 	 */
 	get lightProfile() {
-		return conf.get(this.keys.lightProfile);
+		return config_.get(this.keys.lightProfile);
 	}
 
 	/**
 	 * @param {string} profile
 	 */
 	set lightProfile(profile) {
-		conf.set(this.keys.lightProfile, profile);
+		config_.set(this.keys.lightProfile, profile);
 	}
 }
 

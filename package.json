@@ -9,10 +9,11 @@
     "dark mode",
     "profile"
   ],
+  "repository": "github:patrik-csak/auto-terminal-profile",
   "license": "MIT",
   "author": "Patrik Csak <p@trikcsak.com> (https://patrikcsak.com)",
+  "type": "module",
   "bin": "./cli.js",
-  "repository": "github:patrik-csak/auto-terminal-profile",
   "scripts": {
     "format": "xo --fix && sort-package-json",
     "postinstall": "cd dark-mode-notify && make build",
@@ -38,6 +39,5 @@
   },
   "os": [
     "darwin"
-  ],
-  "type": "module"
+  ]
 }

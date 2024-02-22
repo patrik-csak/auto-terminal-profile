@@ -5,11 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased](https://github.com/patrik-csak/terminal-profile/compare/v3.0.1...HEAD)
+
+### Fixed
+
+- Fix Terminal opening when closed
+
 ## [v3.0.1](https://github.com/patrik-csak/terminal-profile/compare/v3.0.0...v3.0.1) – 2024-02-20
 
 ### Fixed
 
-- Broken post-install compilation step
+- Fix broken post-install compilation step
 
 ## [v3.0.0](https://github.com/patrik-csak/terminal-profile/compare/v2.1.0...v3.0.0) – 2024-02-19
 
@@ -19,7 +25,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Issue causing `auto-terminal-profile` to silently fail on macOS Sonoma
+- Fix issue causing `auto-terminal-profile` to silently fail on macOS Sonoma
 
 ## [v2.1.0](https://github.com/patrik-csak/terminal-profile/compare/v2.0.0...v2.1.0) – 2023-07-04
 

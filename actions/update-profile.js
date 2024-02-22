@@ -1,8 +1,11 @@
 import process from 'node:process';
 import {setTerminalProfile, setTerminalDefaultProfile} from 'terminal-profile';
 import {config} from '../config.js';
+import {isTerminalOpen} from '../functions/index.js';
 
 export async function updateProfile() {
+	if (!(await isTerminalOpen())) return;
+
 	if (!config.darkProfile) {
 		throw new Error('Dark profile not set');
 	}

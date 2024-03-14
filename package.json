@@ -10,6 +10,7 @@
     "profile"
   ],
   "repository": "github:patrik-csak/auto-terminal-profile",
+  "funding": "https://buymeacoffee.com/patrikcsak",
   "license": "MIT",
   "author": "Patrik Csak <p@trikcsak.com> (https://patrikcsak.com)",
   "type": "module",

@@ -1,35 +1,51 @@
-# `auto-terminal-profile`
+# Auto Terminal Profile
 
-Automatically switch the macOS Terminal profile based on the system-wide dark / light appearance mode
+Automatically switch [macOS Terminal](https://en.wikipedia.org/wiki/Terminal_%28macOS%29) profiles when the [dark / light appearance mode](https://support.apple.com/guide/mac-help/use-a-light-or-dark-appearance-mchl52e1c2d2/mac) changes
 
 ![auto-terminal-profile demonstration screen recording](./documentation/demo.gif)
 
 ## Prerequisites
 
-- [Node.js](https://nodejs.org/en/) 18–20
+- [Node.js](https://nodejs.org/) 18–20
 
 ## Installation
 
-```sh
+```shell
 npm install --global auto-terminal-profile
 ```
 
 ## Usage
 
+### Enable automatic profile switching
+
 To get started, enable automatic profile switching and set your preferred dark and light mode profiles:
 
-```sh
+```shell
 auto-terminal-profile enable \
   --dark-profile='One Dark' \
   --light-profile='One Light'
 ```
 
-For more information view the help output:
+### Switch profile on Terminal startup
 
-```sh
-auto-terminal-profile --help
+Auto Terminal Profile only runs if Terminal is running, so the profile can fall out of sync if the macOS appearance mode changes while Terminal isn&rsquo;t running.
+
+To sync the Terminal profile to the current macOS appearance mode once:
+
+```shell
+auto-terminal-profile update-profile
 ```
 
-## Acknowledgements
+To sync the Terminal profile to the current macOS appearance mode when Terminal app is opened, you can add that line to your shell startup script (e.g. `.zshrc`), but it will increase the startup time of new shell sessions.
 
-Thanks [Bouke van der Bijl](https://bou.ke) for his project [dark-mode-notify](https://github.com/bouk/dark-mode-notify), which this project depends on
+### Disable automatic profile switching
+
+```shell
+auto-terminal-profile disable
+```
+
+### Help
+
+```shell
+auto-terminal-profile --help
+```

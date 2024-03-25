@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased](https://github.com/patrik-csak/terminal-profile/compare/v3.0.2...HEAD)
 
+### Added
+
+- Documentation explaining how to automatically update Terminal profile when opening Terminal 
+
 ### Changed
 
 - **BREAKING**: `update-profile` gets appearance mode from OS instead of from `DARKMODE` environment variable

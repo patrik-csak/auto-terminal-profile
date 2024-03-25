@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased](https://github.com/patrik-csak/terminal-profile/compare/v3.0.2...HEAD)
+
+### Changed
+
+- **BREAKING**: `update-profile` gets appearance mode from OS instead of from `DARKMODE` environment variable
+
 ## [v3.0.2](https://github.com/patrik-csak/terminal-profile/compare/v3.0.1...v3.0.2) – 2024-02-21
 
 ### Fixed
@@ -18,6 +24,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fix broken post-install compilation step
 
 ## [v3.0.0](https://github.com/patrik-csak/terminal-profile/compare/v2.1.0...v3.0.0) – 2024-02-19
+
+### Changed
+
+- **BREAKING**: `update-profile` gets appearance mode from `DARKMODE` environment variable instead of from OS
 
 ### Removed
 

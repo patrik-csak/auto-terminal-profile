@@ -1,10 +1,15 @@
-import process from 'node:process';
+import darkMode from 'dark-mode';
 import {setTerminalProfile, setTerminalDefaultProfile} from 'terminal-profile';
 import {config} from '../config.js';
-import {isTerminalOpen} from '../functions/index.js';
+import {
+	isAutomaticSwitchingEnabled,
+	isTerminalOpen,
+} from '../functions/index.js';
 
 export async function updateProfile() {
-	if (!(await isTerminalOpen())) return;
+	if (!(await isAutomaticSwitchingEnabled()) || !(await isTerminalOpen())) {
+		return;
+	}
 
 	if (!config.darkProfile) {
 		throw new Error('Dark profile not set');
@@ -14,7 +19,7 @@ export async function updateProfile() {
 		throw new Error('Light profile not set');
 	}
 
-	const mode = process.env.DARKMODE === '1' ? 'dark' : 'light';
+	const mode = (await darkMode.isEnabled()) ? 'dark' : 'light';
 	const profile = config[`${mode}Profile`];
 
 	await Promise.all([

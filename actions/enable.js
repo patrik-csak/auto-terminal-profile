@@ -1,24 +1,58 @@
 import {config} from '../config.js';
 import {packageJson} from '../constants/index.js';
-import {enableAutomaticSwitching} from '../functions/index.js';
+import {
+	enableAutomaticSwitching,
+	getCurrentMode,
+	isTerminalOpen,
+	setTerminalProfile,
+} from '../functions/index.js';
 
-export async function enable({darkProfile, lightProfile}) {
-	if (!darkProfile && !config.darkProfile) {
-		throw new Error(
-			`Dark profile must be specified with --dark-profile or previously set with \`${packageJson.name} set-dark-mode\``,
-		);
+/**
+ * @param {string} mode
+ */
+function undefinedProfileMessage(mode) {
+	return `${mode} profile must be specified with --${mode}-profile or previously set with \`${packageJson.name} set-${mode}-mode\``;
+}
+
+/**
+ * @param {object} parameters
+ * @param {string|undefined} parameters.darkProfile
+ * @param {string|undefined} parameters.lightProfile
+ */
+export async function enable(parameters) {
+	if (
+		[parameters.darkProfile, config.darkProfile].every(
+			(value) => value === undefined,
+		)
+	) {
+		throw new Error(undefinedProfileMessage('dark'));
 	}
 
-	if (!lightProfile && !config.lightProfile) {
-		throw new Error(
-			`Light profile must be specified with --light-profile or previously set with \`${packageJson.name} set-light-mode\``,
-		);
+	if (
+		[parameters.lightProfile, config.lightProfile].every(
+			(value) => value === undefined,
+		)
+	) {
+		throw new Error(undefinedProfileMessage('light'));
 	}
 
-	if (darkProfile) config.darkProfile = darkProfile;
-	if (lightProfile) config.lightProfile = lightProfile;
+	if (parameters.darkProfile !== undefined) {
+		config.darkProfile = parameters.darkProfile;
+	}
+
+	if (parameters.lightProfile !== undefined) {
+		config.lightProfile = parameters.lightProfile;
+	}
 
 	await enableAutomaticSwitching();
 
-	console.log('Automatic switching enabled');
+	if (await isTerminalOpen()) {
+		const mode = await getCurrentMode();
+
+		if (parameters[`${mode}Profile`] !== undefined) {
+			await setTerminalProfile(config[`${mode}Profile`]);
+		}
+	}
+
+	console.log('automatic switching enabled');
 }

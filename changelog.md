@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- **BREAKING**: `set-(dark|light)-profile` now sets the Terminal profile to the new profile
+- **BREAKING**: `enable` and `set-(dark|light)-profile` now set the Terminal profile
 
 ## [4.0.0](https://github.com/patrik-csak/auto-terminal-profile/compare/v3.0.2...v4.0.0) – 2024-03-25
 

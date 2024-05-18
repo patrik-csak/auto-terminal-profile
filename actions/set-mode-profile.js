@@ -1,6 +1,6 @@
-import darkMode from 'dark-mode';
 import {config} from '../config.js';
 import {
+	getCurrentMode,
 	isAutomaticSwitchingEnabled,
 	isTerminalOpen,
 	setTerminalProfile,
@@ -10,7 +10,7 @@ export async function setModeProfile({mode, profile}) {
 	config[`${mode}Profile`] = profile;
 
 	if ((await isAutomaticSwitchingEnabled()) && (await isTerminalOpen())) {
-		const currentMode = (await darkMode.isEnabled()) ? 'dark' : 'light';
+		const currentMode = await getCurrentMode();
 
 		if (currentMode === mode) {
 			await setTerminalProfile(profile);

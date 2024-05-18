@@ -12,7 +12,7 @@ class Config {
 	};
 
 	/**
-	 * @return {string}
+	 * @return {string|undefined}
 	 */
 	get darkProfile() {
 		return config_.get(this.keys.darkProfile);
@@ -26,7 +26,7 @@ class Config {
 	}
 
 	/**
-	 * @return {string}
+	 * @return {string|undefined}
 	 */
 	get lightProfile() {
 		return config_.get(this.keys.lightProfile);

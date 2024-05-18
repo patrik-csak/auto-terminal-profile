@@ -1,9 +1,9 @@
 import darkMode from 'dark-mode';
-import {setTerminalProfile, setTerminalDefaultProfile} from 'terminal-profile';
 import {config} from '../config.js';
 import {
 	isAutomaticSwitchingEnabled,
 	isTerminalOpen,
+	setTerminalProfile,
 } from '../functions/index.js';
 
 export async function updateProfile() {
@@ -22,8 +22,5 @@ export async function updateProfile() {
 	const mode = (await darkMode.isEnabled()) ? 'dark' : 'light';
 	const profile = config[`${mode}Profile`];
 
-	await Promise.all([
-		setTerminalProfile(profile),
-		setTerminalDefaultProfile(profile),
-	]);
+	await setTerminalProfile(profile);
 }

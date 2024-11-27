@@ -9,5 +9,5 @@ export async function enableAutomaticSwitching() {
 		await getLaunchAgentPlistFileContents(),
 	);
 
-	await execa('launchctl', ['load', '-w', launchAgentPlistFilePath]);
+	await execa`launchctl load -w ${launchAgentPlistFilePath}`;
 }

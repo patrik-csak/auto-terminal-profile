@@ -6,7 +6,7 @@ import {launchAgentPlistFilePath} from '../constants/index.js';
  * @return {Promise<boolean>}
  */
 async function isDarkModeNotifyRunning() {
-	const {stdout} = await execa('launchctl', ['list']);
+	const {stdout} = await execa`launchctl list`;
 
 	return stdout.includes('ke.bou.dark-mode-notify');
 }

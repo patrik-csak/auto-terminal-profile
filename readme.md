@@ -6,7 +6,7 @@ Automatically switch [macOS Terminal](https://en.wikipedia.org/wiki/Terminal_%28
 
 ## Prerequisites
 
-- [Node.js](https://nodejs.org/) 18–20
+- [Node.js](https://nodejs.org/) 20–24
 
 ## Installation
 

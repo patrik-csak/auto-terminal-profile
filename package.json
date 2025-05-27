@@ -16,9 +16,10 @@
   "type": "module",
   "bin": "./cli.js",
   "scripts": {
-    "format": "xo --fix && sort-package-json",
+    "format": "eslint --fix && npm run prettier -- --write && sort-package-json",
     "postinstall": "cd dark-mode-notify && make build",
-    "test": "xo && sort-package-json --check"
+    "prettier": "prettier .",
+    "test": "eslint && npm run prettier -- --check && sort-package-json --check"
   },
   "dependencies": {
     "commander": "^14.0.0",
@@ -33,8 +34,10 @@
     "untildify": "^5.0.0"
   },
   "devDependencies": {
+    "eslint": "^9.27.0",
+    "prettier": "^3.5.3",
     "sort-package-json": "^3.2.1",
-    "xo": "^0.59.3"
+    "xo": "^1.0.0"
   },
   "engines": {
     "node": ">=20 <=24"

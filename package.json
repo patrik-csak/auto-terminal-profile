@@ -29,7 +29,7 @@
     "pupa": "^3.1.0",
     "read-package-up": "^11.0.0",
     "run-applescript": "^7.0.0",
-    "terminal-profile": "^2.0.0",
+    "terminal-profile": "^3.0.0",
     "untildify": "^5.0.0"
   },
   "devDependencies": {
@@ -37,7 +37,7 @@
     "xo": "^0.59.3"
   },
   "engines": {
-    "node": ">=18 <=20"
+    "node": ">=20 <=24"
   },
   "os": [
     "darwin"

@@ -9,12 +9,17 @@
     "dark mode",
     "profile"
   ],
-  "repository": "github:patrik-csak/auto-terminal-profile",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/patrik-csak/auto-terminal-profile.git"
+  },
   "funding": "https://buymeacoffee.com/patrikcsak",
   "license": "MIT",
   "author": "Patrik Csak <p@trikcsak.com> (https://patrikcsak.com)",
   "type": "module",
-  "bin": "./cli.js",
+  "bin": {
+    "auto-terminal-profile": "cli.js"
+  },
   "scripts": {
     "format": "eslint --fix && npm run prettier -- --write && sort-package-json",
     "postinstall": "cd dark-mode-notify && make build",

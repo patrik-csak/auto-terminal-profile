@@ -21,7 +21,7 @@
     "test": "xo && sort-package-json --check"
   },
   "dependencies": {
-    "commander": "^12.0.0",
+    "commander": "^14.0.0",
     "conf": "^13.0.1",
     "dark-mode": "^4.0.0",
     "env-paths": "^3.0.0",

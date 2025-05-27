@@ -33,7 +33,7 @@
     "untildify": "^5.0.0"
   },
   "devDependencies": {
-    "sort-package-json": "^2.7.0",
+    "sort-package-json": "^3.2.1",
     "xo": "^0.59.3"
   },
   "engines": {

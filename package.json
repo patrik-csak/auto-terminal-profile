@@ -1,6 +1,6 @@
 {
   "name": "auto-terminal-profile",
-  "version": "5.0.0",
+  "version": "6.0.0",
   "description": "Automatically switch macOS Terminal profile when system dark / light mode changes",
   "keywords": [
     "macos",

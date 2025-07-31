@@ -36,7 +36,13 @@ To sync the Terminal profile to the current macOS appearance mode once:
 auto-terminal-profile update-profile
 ```
 
-To sync the Terminal profile to the current macOS appearance mode when Terminal app is opened, you can add that line to your shell startup script (e.g. `.zshrc`), but it will increase the startup time of new shell sessions.
+To sync the Terminal profile to the current macOS appearance mode when Terminal app is opened, you can add that line to your shell startup script (e.g. `.zshrc`), but it will increase the startup time of new shell sessions:
+
+```zsh
+if [ "$TERM_PROGRAM" = "Apple_Terminal" ]; then
+	auto-terminal-profile update-profile
+fi
+```
 
 ### Disable automatic profile switching
 

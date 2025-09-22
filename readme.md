@@ -16,7 +16,7 @@ brew install patrik-csak/homebrew-tap/auto-terminal-profile
 
 ## Usage
 
-### 1. Prepare your Terminal profiles
+### 1. Import Terminal profiles
 
 [Import the Terminal profiles](https://support.apple.com/guide/terminal/import-and-export-terminal-profiles-trml4299c696/mac) you want to use, or continue to the next step if you want to use default profiles
 

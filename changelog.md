@@ -16,16 +16,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - **BREAKING**: auto-terminal-profile is now a Homebrew formula
-	- To migrate from the npm package to the new Homebrew formula:
-		1. Disable automatic switching:
-			```shell
-			auto-terminal-profile disable
-			```
-		1. Uninstall the auto-terminal-profile npm package:
-			```shell
-			npm uninstall --global auto-terminal-profile
-			```
-		 1. Follow the new install and usage instructions in the [readme](readme.md)
+  - To migrate from the npm package to the new Homebrew formula:
+    1. Disable automatic switching:
+       ```shell
+       auto-terminal-profile disable
+       ```
+    1. Uninstall the auto-terminal-profile npm package:
+       ```shell
+       npm uninstall --global auto-terminal-profile
+       ```
+    1. Follow the new install and usage instructions in the [readme](readme.md)
 
 ## [6.0.0](https://github.com/patrik-csak/auto-terminal-profile/compare/v5.0.0...v6.0.0) – 2025-05-27
 

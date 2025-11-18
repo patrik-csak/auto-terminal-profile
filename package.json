@@ -21,9 +21,9 @@
     "auto-terminal-profile": "cli.js"
   },
   "scripts": {
-    "format": "eslint --fix && npm run prettier -- --write && sort-package-json",
+    "format": "eslint --fix && npm run prettier -- --write",
     "prettier": "prettier .",
-    "test": "eslint && npm run prettier -- --check && sort-package-json --check"
+    "test": "eslint && npm run prettier -- --check"
   },
   "dependencies": {
     "@commander-js/extra-typings": "^14.0.0",
@@ -40,8 +40,9 @@
   },
   "devDependencies": {
     "eslint": "^9.27.0",
+    "eslint-plugin-package-json": "^0.83.0",
     "prettier": "^3.5.3",
-    "sort-package-json": "^3.2.1",
+    "prettier-plugin-packagejson": "^2.5.19",
     "xo": "^1.0.0"
   },
   "engines": {

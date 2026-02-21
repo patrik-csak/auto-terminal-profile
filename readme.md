@@ -11,7 +11,7 @@ Automatically switch [Terminal](https://en.wikipedia.org/wiki/Terminal_%28macOS%
 ## Installation
 
 ```shell
-brew install patrik-csak/homebrew-tap/auto-terminal-profile
+brew install patrik-csak/tap/auto-terminal-profile
 ```
 
 ## Usage

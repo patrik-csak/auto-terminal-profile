@@ -56,5 +56,5 @@ brew services stop auto-terminal-profile
 
 ### Related
 
-- [dark-notify](https://github.com/cormacrelf/dark-notify) – Library and CLI for observing macOS appearance changes, used by auto-terminal-profile
-- [mac-terminal](https://github.com/patrik-csak/mac-terminal) – Node.js library to control the macOS Terminal app
+- [cormacrelf/dark-notify](https://github.com/cormacrelf/dark-notify) – Library and CLI for observing macOS appearance changes, used by auto-terminal-profile
+- [patrik-csak/mac-terminal](https://github.com/patrik-csak/mac-terminal) – Node.js library to control the macOS Terminal app, used by auto-terminal-profile

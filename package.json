@@ -13,7 +13,6 @@
     "type": "git",
     "url": "git+https://github.com/patrik-csak/auto-terminal-profile.git"
   },
-  "funding": "https://buymeacoffee.com/patrikcsak",
   "license": "MIT",
   "author": "Patrik Csak <p@trikcsak.com> (https://patrikcsak.com)",
   "type": "module",

@@ -26,8 +26,9 @@
     "lint:check": "npm run eslint",
     "lint:fix": "npm run eslint -- --fix",
     "prettier": "prettier .",
-    "quality:check": "npm run format:check && npm run lint:check",
-    "quality:fix": "npm run format:fix && npm run lint:fix"
+    "quality:check": "npm run format:check && npm run lint:check && npm run unused:check",
+    "quality:fix": "npm run format:fix && npm run lint:fix",
+    "unused:check": "knip"
   },
   "dependencies": {
     "@commander-js/extra-typings": "^14.0.0",
@@ -45,6 +46,7 @@
   "devDependencies": {
     "eslint": "^9.27.0",
     "eslint-plugin-package-json": "^0.83.0",
+    "knip": "^5.86.0",
     "prettier": "^3.5.3",
     "prettier-plugin-packagejson": "^2.5.19",
     "xo": "^1.0.0"

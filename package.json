@@ -44,12 +44,12 @@
     "read-package-up": "^12.0.0"
   },
   "devDependencies": {
-    "eslint": "^9.27.0",
-    "eslint-plugin-package-json": "^0.83.0",
+    "eslint": "^10.0.3",
+    "eslint-plugin-package-json": "^0.91.0",
     "knip": "^5.86.0",
     "prettier": "^3.5.3",
-    "prettier-plugin-packagejson": "^2.5.19",
-    "xo": "^1.0.0"
+    "prettier-plugin-packagejson": "^3.0.2",
+    "xo": "^2.0.1"
   },
   "engines": {
     "node": ">=20 <=24"

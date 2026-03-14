@@ -20,9 +20,14 @@
     "auto-terminal-profile": "cli.js"
   },
   "scripts": {
-    "format": "eslint --fix && npm run prettier -- --write",
+    "eslint": "eslint",
+    "format:check": "npm run prettier -- --check",
+    "format:fix": "npm run prettier -- --write",
+    "lint:check": "npm run eslint",
+    "lint:fix": "npm run eslint -- --fix",
     "prettier": "prettier .",
-    "test": "eslint && npm run prettier -- --check"
+    "quality:check": "npm run format:check && npm run lint:check",
+    "quality:fix": "npm run format:fix && npm run lint:fix"
   },
   "dependencies": {
     "@commander-js/extra-typings": "^14.0.0",

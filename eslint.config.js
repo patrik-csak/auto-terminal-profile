@@ -10,7 +10,6 @@ export default defineConfig([
 			prettier: 'compat',
 			rules: {
 				'no-await-in-loop': 'off',
-				'unicorn/no-process-exit': 'off',
 			},
 		},
 	]),

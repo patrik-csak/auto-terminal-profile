@@ -1,4 +1,4 @@
-import chalk from 'chalk';
+import {styleText} from 'node:util';
 import {Command} from 'commander';
 import humanizeString from 'humanize-string';
 import {getConfig, modes} from '../../../library/index.js';
@@ -15,7 +15,7 @@ export default new Command('show')
 					: '\u{2600}'; // Sun
 
 			console.log(
-				`${chalk.yellow(icon)} ${humanizeString(mode)} mode profile: ${config.get(`profiles.${mode}`)}`,
+				`${styleText('yellow', icon)} ${humanizeString(mode)} mode profile: ${config.get(`profiles.${mode}`)}`,
 			);
 		}
 	});

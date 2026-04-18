@@ -17,11 +17,10 @@
   "author": "Patrik Csak <p@trikcsak.com> (https://patrikcsak.com)",
   "type": "module",
   "bin": {
-    "auto-terminal-profile": "cli.js"
+    "auto-terminal-profile": "source/cli.js"
   },
   "files": [
-    "commands",
-    "library"
+    "source"
   ],
   "scripts": {
     "_eslint": "eslint --cache --cache-strategy=content",

@@ -19,6 +19,10 @@
   "bin": {
     "auto-terminal-profile": "cli.js"
   },
+  "files": [
+    "commands",
+    "library"
+  ],
   "scripts": {
     "eslint": "eslint --cache",
     "format:check": "npm run prettier -- --check",

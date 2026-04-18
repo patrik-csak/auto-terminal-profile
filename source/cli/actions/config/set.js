@@ -1,6 +1,6 @@
 import {consola} from 'consola';
 import {getTerminalProfiles, setTerminalProfile} from 'mac-terminal';
-import {getConfig, getCurrentMode, modes} from '../../../library/index.js';
+import {getConfig, getCurrentMode, modes} from '#library';
 
 /**
  * @returns {Promise<void>}

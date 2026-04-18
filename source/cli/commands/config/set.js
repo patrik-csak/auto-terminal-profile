@@ -1,7 +1,7 @@
 import {Command} from '@commander-js/extra-typings';
-import {modes} from '../../../library/index.js';
-import * as actions from '../../actions/index.js';
 import setMode from './set-mode.js';
+import * as actions from '#cli/actions';
+import {modes} from '#library';
 
 const command = new Command('set').description('update configuration');
 

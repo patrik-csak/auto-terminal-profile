@@ -1,5 +1,5 @@
 import {setTerminalProfile} from 'mac-terminal';
-import {getConfig, getCurrentMode} from '../../library/index.js';
+import {getConfig, getCurrentMode} from '#library';
 
 /**
  * @param {{mode?: 'dark' | 'light'}} parameters

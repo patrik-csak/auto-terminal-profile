@@ -1,6 +1,6 @@
 import {styleText} from 'node:util';
 import {upperFirst} from 'es-toolkit/string';
-import {getConfig, modes} from '../../../library/index.js';
+import {getConfig, modes} from '#library';
 
 /**
  * @returns {Promise<void>}

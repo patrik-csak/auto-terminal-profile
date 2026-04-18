@@ -16,6 +16,12 @@
   "license": "MIT",
   "author": "Patrik Csak <p@trikcsak.com> (https://patrikcsak.com)",
   "type": "module",
+  "imports": {
+    "#cli/actions": "./source/cli/actions/index.js",
+    "#cli/commands": "./source/cli/commands/index.js",
+    "#library": "./source/library/index.js",
+    "#package-json": "./package.json"
+  },
   "bin": {
     "auto-terminal-profile": "source/cli.js"
   },

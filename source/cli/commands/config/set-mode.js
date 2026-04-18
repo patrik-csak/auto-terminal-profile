@@ -1,6 +1,6 @@
 import {Argument, Command} from '@commander-js/extra-typings';
 import {getTerminalProfiles} from 'mac-terminal';
-import * as actions from '../../actions/index.js';
+import * as actions from '#cli/actions';
 
 /**
  * Make set mode command

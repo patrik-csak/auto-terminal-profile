@@ -24,15 +24,17 @@
     "library"
   ],
   "scripts": {
-    "eslint": "eslint --cache",
-    "format:check": "npm run prettier -- --check",
-    "format:fix": "npm run prettier -- --write",
-    "lint:check": "npm run eslint",
-    "lint:fix": "npm run eslint -- --fix",
-    "prettier": "prettier --cache .",
+    "_eslint": "eslint --cache --cache-strategy=content",
+    "_knip": "knip --cache",
+    "_prettier": "prettier --cache .",
+    "format:check": "npm run _prettier -- --check",
+    "format:fix": "npm run _prettier -- --write",
+    "lint:check": "npm run _eslint",
+    "lint:fix": "npm run _eslint -- --fix",
     "quality:check": "npm run format:check && npm run lint:check && npm run unused:check",
-    "quality:fix": "npm run format:fix && npm run lint:fix",
-    "unused:check": "knip"
+    "quality:fix": "npm run format:fix && npm run lint:fix && npm run unused:fix",
+    "unused:check": "npm run _knip",
+    "unused:fix": "npm run _knip -- --fix"
   },
   "dependencies": {
     "@commander-js/extra-typings": "^14.0.0",

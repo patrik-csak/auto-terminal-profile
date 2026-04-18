@@ -38,7 +38,6 @@
     "dark-mode": "^5.0.0",
     "es-toolkit": "^1.45.1",
     "mac-terminal": "^5.0.0",
-    "ow": "^3.0.0",
     "p-memoize": "^8.0.0",
     "read-package-up": "^12.0.0"
   },

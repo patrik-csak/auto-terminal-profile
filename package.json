@@ -44,7 +44,6 @@
     "eslint-plugin-package-json": "^0.91.0",
     "knip": "^5.86.0",
     "prettier": "^3.5.3",
-    "prettier-plugin-packagejson": "^3.0.2",
     "xo": "^2.0.1"
   },
   "engines": {

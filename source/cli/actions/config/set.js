@@ -1,16 +1,11 @@
-import {Command} from '@commander-js/extra-typings';
 import {consola} from 'consola';
 import {getTerminalProfiles, setTerminalProfile} from 'mac-terminal';
-import {getConfig, getCurrentMode, modes} from '../../../../library/index.js';
-import {setMode as setModeCommand} from './commands/index.js';
+import {getConfig, getCurrentMode, modes} from '../../../library/index.js';
 
-const command = new Command('set').description('update configuration');
-
-for (const mode of modes) {
-	command.addCommand(await setModeCommand(mode));
-}
-
-command.action(async () => {
+/**
+ * @returns {Promise<void>}
+ */
+export default async function set() {
 	const config = await getConfig();
 	const profiles = await getTerminalProfiles();
 	const newProfiles = {};
@@ -42,6 +37,4 @@ command.action(async () => {
 		profile: newProfiles[currentMode],
 		setDefault: true,
 	});
-});
-
-export default command;
+}

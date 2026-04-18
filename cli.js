@@ -2,9 +2,7 @@
 
 import {program} from 'commander';
 import {config, update} from './commands/index.js';
-import {getPackageJson} from './library/index.js';
-
-const packageJson = await getPackageJson();
+import packageJson from './package.json' with {type: 'json'};
 
 program
 	.name(packageJson.name)

@@ -1,6 +1,6 @@
 import {styleText} from 'node:util';
 import {Command} from 'commander';
-import humanizeString from 'humanize-string';
+import {upperFirst} from 'es-toolkit/string';
 import {getConfig, modes} from '../../../library/index.js';
 
 export default new Command('show')
@@ -15,7 +15,7 @@ export default new Command('show')
 					: '\u{2600}'; // Sun
 
 			console.log(
-				`${styleText('yellow', icon)} ${humanizeString(mode)} mode profile: ${config.get(`profiles.${mode}`)}`,
+				`${styleText('yellow', icon)} ${upperFirst(mode)} mode profile: ${config.get(`profiles.${mode}`)}`,
 			);
 		}
 	});

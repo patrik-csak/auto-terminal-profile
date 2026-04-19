@@ -29,7 +29,6 @@ export default async function set() {
 
 	config.set('profiles', newProfiles);
 
-	console.log('\n');
 	consola.success('Saved configuration');
 
 	const currentMode = await getCurrentMode();

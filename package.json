@@ -53,6 +53,7 @@
     "mac-terminal": "^5.0.0"
   },
   "devDependencies": {
+    "@e18e/eslint-plugin": "^0.3.0",
     "eslint": "^10.0.3",
     "eslint-plugin-package-json": "^0.91.0",
     "knip": "^6.3.1",

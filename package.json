@@ -38,6 +38,8 @@
     "lint:fix": "npm run _eslint -- --fix",
     "quality:check": "npm run format:check && npm run lint:check && npm run unused:check",
     "quality:fix": "npm run format:fix && npm run lint:fix && npm run unused:fix",
+    "test": "node --experimental-test-module-mocks --test",
+    "test:coverage": "node --experimental-test-coverage --experimental-test-module-mocks --test",
     "unused:check": "npm run _knip",
     "unused:fix": "npm run _knip -- --fix"
   },

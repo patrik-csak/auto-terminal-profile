@@ -1,3 +1,5 @@
+// eslint-disable-next-line n/prefer-global/console
+import console from 'node:console';
 import {styleText} from 'node:util';
 import {upperFirst} from 'es-toolkit/string';
 import {getConfig, modes} from '#library';

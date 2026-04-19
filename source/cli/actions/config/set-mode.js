@@ -15,7 +15,7 @@ export default async function setMode({mode, profile}) {
 
 	config.set(`profiles.${mode}`, profile);
 
-	consola.success('Saved configuration');
+	consola.success('saved configuration');
 
 	if (mode === (await getCurrentMode())) {
 		await setTerminalProfile({profile, setDefault: true});

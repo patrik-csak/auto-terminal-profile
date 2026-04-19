@@ -48,7 +48,6 @@
     "conf": "^15.0.2",
     "consola": "^3.4.2",
     "dark-mode": "^5.0.0",
-    "es-toolkit": "^1.45.1",
     "mac-terminal": "^5.0.0",
     "ow": "^3.1.1"
   },

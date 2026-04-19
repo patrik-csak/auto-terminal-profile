@@ -13,7 +13,7 @@ export default async function set() {
 	for (const mode of modes) {
 		// eslint-disable-next-line no-await-in-loop
 		const selectedProfile = await consola.prompt(
-			`Select ${mode} mode profile`,
+			`select ${mode} mode profile`,
 			{
 				type: 'select',
 				options: profiles,
@@ -29,7 +29,7 @@ export default async function set() {
 
 	config.set('profiles', newProfiles);
 
-	consola.success('Saved configuration');
+	consola.success('saved configuration');
 
 	const currentMode = await getCurrentMode();
 

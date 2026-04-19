@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased](https://github.com/patrik-csak/auto-terminal-profile/compare/v7.0.1...HEAD)
 
+- **BREAKING**: Update minimum supported Node.js version from 20 to 22
 - Updated and removed dependencies
 
 ## [7.0.1](https://github.com/patrik-csak/auto-terminal-profile/compare/v7.0.0...v7.0.1) – 2025-11-17

@@ -11,6 +11,7 @@ export default async function set() {
 	const newProfiles = {};
 
 	for (const mode of modes) {
+		// eslint-disable-next-line no-await-in-loop
 		const selectedProfile = await consola.prompt(
 			`Select ${mode} mode profile`,
 			{

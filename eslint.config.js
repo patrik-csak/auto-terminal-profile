@@ -11,9 +11,6 @@ export default defineConfig([
 			xo.xoToEslintConfig([
 				{
 					prettier: 'compat',
-					rules: {
-						'no-await-in-loop': 'off',
-					},
 				},
 			]),
 		],

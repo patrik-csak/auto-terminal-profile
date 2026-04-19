@@ -7,7 +7,7 @@ import * as actions from '#cli/actions';
  *
  * @param {'dark' | 'light'} mode
  */
-export default async function setMode(mode) {
+export default function setMode(mode) {
 	return new Command(mode)
 		.description(`set terminal profile for ${mode}`)
 		.addArgument(

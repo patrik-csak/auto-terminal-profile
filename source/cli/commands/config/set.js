@@ -6,8 +6,7 @@ import {modes} from '#library';
 const command = new Command('set').description('update configuration');
 
 for (const mode of modes) {
-	// eslint-disable-next-line no-await-in-loop
-	command.addCommand(await setMode(mode));
+	command.addCommand(setMode(mode));
 }
 
 command.action(actions.config.set);

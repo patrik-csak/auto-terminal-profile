@@ -1,4 +1,4 @@
-import {Argument, Command} from '@commander-js/extra-typings';
+import {Argument, Command} from 'commander';
 import {getTerminalProfiles} from 'mac-terminal';
 import * as actions from '#cli/actions';
 

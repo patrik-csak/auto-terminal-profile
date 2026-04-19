@@ -44,7 +44,6 @@
     "unused:fix": "npm run _knip -- --fix"
   },
   "dependencies": {
-    "@commander-js/extra-typings": "^14.0.0",
     "commander": "^14.0.0",
     "conf": "^15.0.2",
     "consola": "^3.4.2",

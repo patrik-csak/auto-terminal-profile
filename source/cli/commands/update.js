@@ -1,4 +1,4 @@
-import {Argument, Command} from '@commander-js/extra-typings';
+import {Argument, Command} from 'commander';
 import * as actions from '#cli/actions';
 import {modes} from '#library';
 

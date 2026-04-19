@@ -1,5 +1,5 @@
-import {Argument, Command} from 'commander';
-import {getTerminalProfiles} from 'mac-terminal';
+import {Command} from 'commander';
+import {ArgumentError} from 'ow';
 import * as actions from '#cli/actions';
 
 /**
@@ -10,10 +10,16 @@ import * as actions from '#cli/actions';
 export default function setMode(mode) {
 	return new Command(mode)
 		.description(`set terminal profile for ${mode}`)
-		.addArgument(
-			new Argument('<profile>', 'terminal profile name').choices(
-				await getTerminalProfiles(),
-			),
-		)
-		.action(async (profile) => actions.config.setMode({mode, profile}));
+		.argument('<profile>', 'terminal profile name')
+		.action(async function (profile) {
+			try {
+				await actions.config.setMode({mode, profile});
+			} catch (error) {
+				if (error instanceof ArgumentError) {
+					this.error(error.message);
+				}
+
+				throw error;
+			}
+		});
 }

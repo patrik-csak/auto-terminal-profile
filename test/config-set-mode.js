@@ -4,7 +4,10 @@ import assert from 'node:assert/strict';
 const consola = {success: mock.fn()};
 mock.module('consola', {namedExports: {consola}});
 
-const macTerminal = {setTerminalProfile: mock.fn()};
+const macTerminal = {
+	getTerminalProfiles: mock.fn(async () => ['Profile']),
+	setTerminalProfile: mock.fn(),
+};
 mock.module('mac-terminal', {namedExports: macTerminal});
 
 const config = {set: mock.fn()};
@@ -42,7 +45,7 @@ describe('setMode', () => {
 
 		assert.match(
 			consola.success.mock.calls[0].arguments[0],
-			/Saved configuration/v,
+			/saved configuration/v,
 		);
 	});
 
@@ -67,5 +70,12 @@ describe('setMode', () => {
 		await setMode({mode: 'dark', profile: 'Profile'});
 
 		assert.equal(macTerminal.setTerminalProfile.mock.callCount(), 0);
+	});
+
+	it('throws when profile is not a valid terminal profile', async () => {
+		await assert.rejects(
+			setMode({mode: 'dark', profile: 'Nonexistent'}),
+			{name: 'ArgumentError'},
+		);
 	});
 });

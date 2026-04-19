@@ -62,6 +62,15 @@
   "engines": {
     "node": ">=22 <=24"
   },
+  "devEngines": {
+    "runtime": {
+      "name": "node"
+    },
+    "packageManager": {
+      "name": "npm",
+      "version": ">=11.10.0"
+    }
+  },
   "os": [
     "darwin"
   ]

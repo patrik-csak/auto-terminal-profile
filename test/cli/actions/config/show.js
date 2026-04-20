@@ -13,7 +13,7 @@ const library = {
 };
 mock.module('#library', {namedExports: library});
 
-const {default: show} = await import('../source/cli/actions/config/show.js');
+const {default: show} = await import('../../../../source/cli/actions/config/show.js');
 
 describe('show', () => {
 	beforeEach(() => {

@@ -18,7 +18,7 @@ const library = {
 mock.module('#library', {namedExports: library});
 
 const {default: setMode} =
-	await import('../source/cli/actions/config/set-mode.js');
+	await import('../../../../source/cli/actions/config/set-mode.js');
 
 describe('setMode', () => {
 	beforeEach(() => {

@@ -5,7 +5,7 @@ const darkMode = {isEnabled: mock.fn()};
 mock.module('dark-mode', {defaultExport: darkMode});
 
 const {default: getCurrentMode} =
-	await import('../source/library/get-current-mode.js');
+	await import('../../source/library/get-current-mode.js');
 
 describe('getCurrentMode', () => {
 	beforeEach(() => {

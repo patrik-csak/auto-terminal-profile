@@ -1,6 +1,6 @@
-import {Argument, Command} from 'commander';
 import * as actions from '#cli/actions';
 import {modes} from '#library';
+import {Argument, Command} from 'commander';
 
 export default new Command('update')
 	.description('update terminal profile based on the mode')

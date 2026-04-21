@@ -1,7 +1,7 @@
+import {getConfig, getCurrentMode} from '#library';
 import {consola} from 'consola';
 import {getTerminalProfiles, setTerminalProfile} from 'mac-terminal';
 import ow from 'ow';
-import {getConfig, getCurrentMode} from '#library';
 
 /**
  * @param {{mode: 'dark' | 'light', profile: string}} parameters

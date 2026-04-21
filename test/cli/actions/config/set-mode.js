@@ -1,5 +1,5 @@
-import {beforeEach, describe, it, mock} from 'node:test';
 import assert from 'node:assert/strict';
+import {beforeEach, describe, it, mock} from 'node:test';
 
 const consola = {success: mock.fn()};
 mock.module('consola', {namedExports: {consola}});
@@ -12,8 +12,8 @@ mock.module('mac-terminal', {namedExports: macTerminal});
 
 const config = {set: mock.fn()};
 const library = {
-	getCurrentMode: mock.fn(),
 	getConfig: mock.fn(async () => config),
+	getCurrentMode: mock.fn(),
 };
 mock.module('#library', {namedExports: library});
 

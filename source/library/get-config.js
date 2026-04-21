@@ -1,15 +1,20 @@
+import packageJson from '#package-json' with {type: 'json'};
 import Conf from 'conf';
 import {getTerminalDefaultProfile} from 'mac-terminal';
-import packageJson from '#package-json' with {type: 'json'};
 
 export default async function getConfig() {
 	const defaultProfile = await getTerminalDefaultProfile();
 
 	const config = new Conf({
+		defaults: {
+			profiles: {
+				dark: defaultProfile,
+				light: defaultProfile,
+			},
+		},
 		projectName: packageJson.name,
 		schema: {
 			profiles: {
-				type: 'object',
 				properties: {
 					dark: {
 						type: 'string',
@@ -18,12 +23,7 @@ export default async function getConfig() {
 						type: 'string',
 					},
 				},
-			},
-		},
-		defaults: {
-			profiles: {
-				dark: defaultProfile,
-				light: defaultProfile,
+				type: 'object',
 			},
 		},
 	});

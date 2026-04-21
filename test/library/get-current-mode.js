@@ -1,5 +1,5 @@
-import {beforeEach, describe, it, mock} from 'node:test';
 import assert from 'node:assert/strict';
+import {beforeEach, describe, it, mock} from 'node:test';
 
 const darkMode = {isEnabled: mock.fn()};
 mock.module('dark-mode', {defaultExport: darkMode});

@@ -1,13 +1,13 @@
-import {beforeEach, describe, it, mock} from 'node:test';
 import assert from 'node:assert/strict';
+import {beforeEach, describe, it, mock} from 'node:test';
 
 const macTerminal = {setTerminalProfile: mock.fn()};
 mock.module('mac-terminal', {namedExports: macTerminal});
 
 const config = {get: mock.fn()};
 const library = {
-	getCurrentMode: mock.fn(),
 	getConfig: mock.fn(async () => config),
+	getCurrentMode: mock.fn(),
 };
 mock.module('#library', {namedExports: library});
 

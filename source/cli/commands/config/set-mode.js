@@ -1,6 +1,6 @@
+import * as actions from '#cli/actions';
 import {Command} from 'commander';
 import {ArgumentError} from 'ow';
-import * as actions from '#cli/actions';
 
 /**
  * Make set mode command

@@ -1,7 +1,7 @@
+import {getConfig, modes} from '#library';
 // eslint-disable-next-line n/prefer-global/console
 import console from 'node:console';
 import {styleText} from 'node:util';
-import {getConfig, modes} from '#library';
 
 /**
  * @returns {Promise<void>}

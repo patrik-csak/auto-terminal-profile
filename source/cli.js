@@ -1,8 +1,8 @@
 #! /usr/bin/env node
 
-import {program} from 'commander';
 import * as commands from '#cli/commands';
 import packageJson from '#package-json' with {type: 'json'};
+import {program} from 'commander';
 
 program
 	.name(packageJson.name)

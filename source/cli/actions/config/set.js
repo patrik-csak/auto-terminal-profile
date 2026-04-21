@@ -1,6 +1,6 @@
+import {getConfig, getCurrentMode, modes} from '#library';
 import {consola} from 'consola';
 import {getTerminalProfiles, setTerminalProfile} from 'mac-terminal';
-import {getConfig, getCurrentMode, modes} from '#library';
 
 /**
  * @returns {Promise<void>}
@@ -15,10 +15,10 @@ export default async function set() {
 		const selectedProfile = await consola.prompt(
 			`select ${mode} mode profile`,
 			{
-				type: 'select',
-				options: profiles,
-				initial: config.get(`profiles.${mode}`),
 				cancel: 'undefined',
+				initial: config.get(`profiles.${mode}`),
+				options: profiles,
+				type: 'select',
 			},
 		);
 

@@ -73,9 +73,8 @@ describe('setMode', () => {
 	});
 
 	it('throws when profile is not a valid terminal profile', async () => {
-		await assert.rejects(
-			setMode({mode: 'dark', profile: 'Nonexistent'}),
-			{name: 'ArgumentError'},
-		);
+		await assert.rejects(setMode({mode: 'dark', profile: 'Nonexistent'}), {
+			name: 'ArgumentError',
+		});
 	});
 });

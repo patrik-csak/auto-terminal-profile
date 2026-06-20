@@ -36,7 +36,7 @@
     "unused:check": "knip"
   },
   "dependencies": {
-    "commander": "^14.0.0",
+    "commander": "^15.0.0",
     "conf": "^15.0.2",
     "consola": "^3.4.2",
     "dark-mode": "^5.0.0",

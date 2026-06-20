@@ -4,8 +4,8 @@ import * as actions from '#cli/actions';
 
 /**
  Make set mode command
- 
- @param {'dark' | 'light'} mode
+
+ @param {'dark' | 'light'} mode - Appearance mode
  */
 export default function setMode(mode) {
 	return new Command(mode)

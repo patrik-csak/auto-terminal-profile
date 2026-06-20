@@ -3,6 +3,8 @@ import {getTerminalProfiles, setTerminalProfile} from 'mac-terminal';
 import {getConfig, getCurrentMode, modes} from '#library';
 
 /**
+ Prompt for and save Terminal profiles for both appearance modes
+
  @returns {Promise<void>}
  */
 export default async function set() {

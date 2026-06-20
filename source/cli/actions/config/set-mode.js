@@ -4,7 +4,9 @@ import ow from 'ow';
 import {getConfig, getCurrentMode} from '#library';
 
 /**
- @param {{mode: 'dark' | 'light', profile: string}} parameters
+ Set the Terminal profile for an appearance mode
+
+ @param {{mode: 'dark' | 'light', profile: string}} parameters - Mode and profile to save
  @throws {import('ow').ArgumentError}
  @returns {Promise<void>}
  */

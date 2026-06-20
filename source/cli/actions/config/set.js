@@ -3,7 +3,7 @@ import {getTerminalProfiles, setTerminalProfile} from 'mac-terminal';
 import {getConfig, getCurrentMode, modes} from '#library';
 
 /**
- * @returns {Promise<void>}
+ @returns {Promise<void>}
  */
 export default async function set() {
 	const config = await getConfig();
@@ -22,7 +22,9 @@ export default async function set() {
 			},
 		);
 
-		if (selectedProfile === undefined) return;
+		if (selectedProfile === undefined) {
+			return;
+		}
 
 		newProfiles[mode] = selectedProfile;
 	}

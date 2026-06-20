@@ -4,9 +4,9 @@ import ow from 'ow';
 import {getConfig, getCurrentMode} from '#library';
 
 /**
- * @param {{mode: 'dark' | 'light', profile: string}} parameters
- * @throws {import('ow').ArgumentError}
- * @returns {Promise<void>}
+ @param {{mode: 'dark' | 'light', profile: string}} parameters
+ @throws {import('ow').ArgumentError}
+ @returns {Promise<void>}
  */
 export default async function setMode({mode, profile}) {
 	ow(profile, ow.string.oneOf(await getTerminalProfiles()));

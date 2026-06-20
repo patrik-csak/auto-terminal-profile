@@ -1,5 +1,5 @@
 /**
- * @type {import('prettier').Options}
+ @type {import('prettier').Options}
  */
 const config = {
 	// https://github.com/xojs/xo#prettier

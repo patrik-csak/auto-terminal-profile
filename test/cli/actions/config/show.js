@@ -1,5 +1,10 @@
 import assert from 'node:assert/strict';
-import {beforeEach, describe, it, mock} from 'node:test';
+import {
+	beforeEach,
+	describe,
+	it,
+	mock,
+} from 'node:test';
 
 const console = {
 	log: mock.fn(),
@@ -13,8 +18,7 @@ const library = {
 };
 mock.module('#library', {namedExports: library});
 
-const {default: show} =
-	await import('../../../../source/cli/actions/config/show.js');
+const {default: show} = await import('../../../../source/cli/actions/config/show.js');
 
 describe('show', () => {
 	beforeEach(() => {
@@ -24,9 +28,10 @@ describe('show', () => {
 	});
 
 	it('logs each mode profile', async () => {
-		config.get.mock.mockImplementation((key) =>
-			key === 'profiles.dark' ? 'Dark Profile' : 'Light Profile',
-		);
+		config.get.mock.mockImplementation(key =>
+			key === 'profiles.dark'
+				? 'Dark Profile'
+				: 'Light Profile');
 
 		await show();
 

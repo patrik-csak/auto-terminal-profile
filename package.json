@@ -27,12 +27,10 @@
     "source"
   ],
   "scripts": {
-    "format:check": "prettier --check .",
-    "format:fix": "prettier --write .",
     "lint:check": "eslint",
     "lint:fix": "eslint --fix",
-    "quality:check": "npm run lint:check && npm run format:check && npm run unused:check",
-    "quality:fix": "npm run lint:fix && npm run format:fix",
+    "quality:check": "npm run lint:check && npm run unused:check",
+    "quality:fix": "npm run lint:fix",
     "test": "node --experimental-test-module-mocks --test",
     "test:coverage": "npm run test -- --experimental-test-coverage",
     "unused:check": "knip"
@@ -49,7 +47,6 @@
     "eslint": "^10.0.3",
     "eslint-plugin-package-json": "^1.4.0",
     "knip": "^6.3.1",
-    "prettier": "^3.5.3",
     "xo": "^3.0.2"
   },
   "engines": {

@@ -1,5 +1,10 @@
 import assert from 'node:assert/strict';
-import {beforeEach, describe, it, mock} from 'node:test';
+import {
+	beforeEach,
+	describe,
+	it,
+	mock,
+} from 'node:test';
 
 const consola = {success: mock.fn()};
 mock.module('consola', {namedExports: {consola}});
@@ -17,8 +22,7 @@ const library = {
 };
 mock.module('#library', {namedExports: library});
 
-const {default: setMode} =
-	await import('../../../../source/cli/actions/config/set-mode.js');
+const {default: setMode} = await import('../../../../source/cli/actions/config/set-mode.js');
 
 describe('setMode', () => {
 	beforeEach(() => {

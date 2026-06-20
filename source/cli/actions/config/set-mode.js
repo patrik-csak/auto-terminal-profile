@@ -1,17 +1,20 @@
 import {consola} from 'consola';
 import {getTerminalProfiles, setTerminalProfile} from 'mac-terminal';
-import ow from 'ow';
 import {getConfig, getCurrentMode} from '#library';
 
 /**
  Set the Terminal profile for an appearance mode
 
  @param {{mode: 'dark' | 'light', profile: string}} parameters - Mode and profile to save
- @throws {import('ow').ArgumentError}
+ @throws {Error}
  @returns {Promise<void>}
  */
 export default async function setMode({mode, profile}) {
-	ow(profile, ow.string.oneOf(await getTerminalProfiles()));
+	const profiles = await getTerminalProfiles();
+
+	if (!profiles.includes(profile)) {
+		throw new Error(`Expected string to be one of ${JSON.stringify(profiles)}, got \`${profile}\``);
+	}
 
 	const config = await getConfig();
 

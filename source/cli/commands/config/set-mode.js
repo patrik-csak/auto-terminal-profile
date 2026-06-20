@@ -1,5 +1,4 @@
 import {Command} from 'commander';
-import {ArgumentError} from 'ow';
 import * as actions from '#cli/actions';
 
 /**
@@ -15,7 +14,7 @@ export default function setMode(mode) {
 			try {
 				await actions.config.setMode({mode, profile});
 			} catch (error) {
-				if (error instanceof ArgumentError) {
+				if (error instanceof Error) {
 					this.error(error.message);
 				}
 

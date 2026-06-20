@@ -27,19 +27,15 @@
     "source"
   ],
   "scripts": {
-    "_eslint": "eslint --cache --cache-strategy=content",
-    "_knip": "knip --cache",
-    "_prettier": "prettier --cache .",
-    "format:check": "npm run _prettier -- --check",
-    "format:fix": "npm run _prettier -- --write",
-    "lint:check": "npm run _eslint",
-    "lint:fix": "npm run _eslint -- --fix",
+    "format:check": "prettier --check .",
+    "format:fix": "prettier --write .",
+    "lint:check": "eslint",
+    "lint:fix": "eslint --fix",
     "quality:check": "npm run lint:check && npm run format:check && npm run unused:check",
-    "quality:fix": "npm run lint:fix && npm run format:fix && npm run unused:fix",
+    "quality:fix": "npm run lint:fix && npm run format:fix",
     "test": "node --experimental-test-module-mocks --test",
-    "test:coverage": "node --experimental-test-coverage --experimental-test-module-mocks --test",
-    "unused:check": "npm run _knip",
-    "unused:fix": "npm run _knip -- --fix"
+    "test:coverage": "npm run test -- --experimental-test-coverage",
+    "unused:check": "knip"
   },
   "dependencies": {
     "commander": "^14.0.0",

@@ -45,6 +45,7 @@ describe('setMode', () => {
 
 		assert.match(
 			consola.success.mock.calls[0].arguments[0],
+			// eslint-disable-next-line e18e/prefer-static-regex
 			/saved configuration/v,
 		);
 	});

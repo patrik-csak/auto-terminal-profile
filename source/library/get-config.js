@@ -1,6 +1,6 @@
-import packageJson from '#package-json' with {type: 'json'};
 import Conf from 'conf';
 import {getTerminalDefaultProfile} from 'mac-terminal';
+import packageJson from '#package-json' with {type: 'json'};
 
 export default async function getConfig() {
 	const defaultProfile = await getTerminalDefaultProfile();

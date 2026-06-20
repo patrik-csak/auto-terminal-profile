@@ -9,6 +9,9 @@ program
 	.description(packageJson.description)
 	.version(packageJson.version);
 
-program.addCommand(commands.config).addCommand(commands.update);
+program
+	.addCommand(commands.config)
+	.addCommand(commands.update)
+	.addCommand(commands.watch);
 
 await program.parseAsync();

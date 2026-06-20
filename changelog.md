@@ -5,7 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased](https://github.com/patrik-csak/auto-terminal-profile/compare/v8.0.0...HEAD)
+
+### Added
+
+- `watch` command so that the Homebrew formula doesn't need to depend on [cormacrelf/dark-notify](https://github.com/cormacrelf/dark-notify), which is a non-core formula
+
 ## [8.0.0](https://github.com/patrik-csak/auto-terminal-profile/compare/v7.0.1...v8.0.0) – 2026-04-19
+
+### Changed
 
 - **BREAKING**: Update minimum supported Node.js version from 20 to 22
 - Updated and removed dependencies

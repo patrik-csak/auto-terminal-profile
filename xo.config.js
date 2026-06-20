@@ -1,4 +1,3 @@
-import e18e from '@e18e/eslint-plugin';
 import packageJson from 'eslint-plugin-package-json/experimental';
 
 /** @type {import('xo').FlatXoConfig} */
@@ -12,8 +11,6 @@ const config = [
 	{
 		prettier: 'compat',
 	},
-
-	e18e.configs.recommended,
 
 	packageJson.configs.recommended,
 	packageJson.configs.stylistic,

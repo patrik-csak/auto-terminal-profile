@@ -30,9 +30,7 @@ describe('show', () => {
 
 		await show();
 
-		/* eslint-disable e18e/prefer-static-regex */
 		assert.match(console.log.mock.calls[0].arguments[0], /Dark Profile/v);
 		assert.match(console.log.mock.calls[1].arguments[0], /Light Profile/v);
-		/* eslint-enable */
 	});
 });

@@ -1,5 +1,5 @@
 import {consola} from 'consola';
-import {getTerminalProfiles, setTerminalProfile} from 'mac-terminal';
+import {assertTerminalProfile, setTerminalProfile} from 'mac-terminal';
 import {getConfig, getCurrentMode} from '#library';
 
 /**
@@ -10,11 +10,7 @@ import {getConfig, getCurrentMode} from '#library';
  @returns {Promise<void>}
  */
 export default async function setMode({mode, profile}) {
-	const profiles = await getTerminalProfiles();
-
-	if (!profiles.includes(profile)) {
-		throw new Error(`Expected string to be one of ${JSON.stringify(profiles)}, got \`${profile}\``);
-	}
+	await assertTerminalProfile(profile);
 
 	const config = await getConfig();
 

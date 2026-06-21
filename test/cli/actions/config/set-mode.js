@@ -10,7 +10,7 @@ const consola = {success: mock.fn()};
 mock.module('consola', {namedExports: {consola}});
 
 const macTerminal = {
-	getTerminalProfiles: mock.fn(async () => ['Profile']),
+	assertTerminalProfile: mock.fn(),
 	setTerminalProfile: mock.fn(),
 };
 mock.module('mac-terminal', {namedExports: macTerminal});
@@ -27,6 +27,7 @@ const {default: setMode} = await import('../../../../source/cli/actions/config/s
 describe('setMode', () => {
 	beforeEach(() => {
 		consola.success.mock.resetCalls();
+		macTerminal.assertTerminalProfile.mock.resetCalls();
 		macTerminal.setTerminalProfile.mock.resetCalls();
 		library.getCurrentMode.mock.resetCalls();
 		library.getConfig.mock.resetCalls();
@@ -40,6 +41,17 @@ describe('setMode', () => {
 
 		assert.equal(config.set.mock.calls[0].arguments[0], 'profiles.dark');
 		assert.equal(config.set.mock.calls[0].arguments[1], 'Profile');
+	});
+
+	it('asserts the terminal profile', async () => {
+		library.getCurrentMode.mock.mockImplementation(async () => 'light');
+
+		await setMode({mode: 'dark', profile: 'Profile'});
+
+		assert.equal(
+			macTerminal.assertTerminalProfile.mock.calls[0].arguments[0],
+			'Profile',
+		);
 	});
 
 	it('logs a success message', async () => {
@@ -77,8 +89,12 @@ describe('setMode', () => {
 	});
 
 	it('throws when profile is not a valid terminal profile', async () => {
+		macTerminal.assertTerminalProfile.mock.mockImplementation(async () => {
+			throw new Error('Invalid profile');
+		});
+
 		await assert.rejects(setMode({mode: 'dark', profile: 'Nonexistent'}), {
-			name: 'Error',
+			message: 'Invalid profile',
 		});
 	});
 });

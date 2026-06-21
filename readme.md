@@ -85,8 +85,6 @@ You can use the [`auto-terminal-profile` npm package](https://npmx.dev/package/a
 
 	The process will continue until you stop it with <kbd>Ctrl</kbd>+<kbd>C</kbd>
 
----
-
-### Related
+## Related
 
 - [patrik-csak/mac-terminal](https://github.com/patrik-csak/mac-terminal) · Node.js library to control the macOS Terminal app, used by this app

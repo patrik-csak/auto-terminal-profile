@@ -43,10 +43,9 @@
     "mac-terminal": "^6.1.0"
   },
   "devDependencies": {
-    "eslint": "^10.0.3",
-    "eslint-plugin-package-json": "^1.4.0",
-    "knip": "^6.3.1",
-    "xo": "^3.0.2"
+    "eslint": "^10.8.0",
+    "eslint-config-xo": "^0.58.1",
+    "knip": "^6.29.0"
   },
   "engines": {
     "node": ">=22 <=24"

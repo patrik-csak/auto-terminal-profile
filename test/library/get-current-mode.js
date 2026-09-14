@@ -1,30 +1,31 @@
-import assert from 'node:assert/strict';
-import {
-	beforeEach,
-	describe,
-	it,
-	mock,
-} from 'node:test';
+import {suite, test} from 'node:test';
 
-const darkMode = {isEnabled: mock.fn()};
-mock.module('dark-mode', {defaultExport: darkMode});
+/**
+@param {import('node:test').TestContext} t
+*/
+async function setup(t) {
+	const darkMode = {isEnabled: t.mock.fn()};
+	t.mock.module('dark-mode', {exports: {default: darkMode}});
+	// https://github.com/nodejs/node/issues/59163
+	const {default: getCurrentMode} = await import(`../../source/library/get-current-mode.js?test=${t.name}`);
 
-const {default: getCurrentMode} = await import('../../source/library/get-current-mode.js');
+	return {getCurrentMode, darkMode};
+}
 
-describe('getCurrentMode', () => {
-	beforeEach(() => {
-		darkMode.isEnabled.mock.resetCalls();
-	});
+suite('getCurrentMode', () => {
+	test('returns dark when dark mode is enabled', async t => {
+		const {getCurrentMode, darkMode} = await setup(t);
 
-	it('returns dark when dark mode is enabled', async () => {
 		darkMode.isEnabled.mock.mockImplementation(async () => true);
 
-		assert.equal(await getCurrentMode(), 'dark');
+		t.assert.strictEqual(await getCurrentMode(), 'dark');
 	});
 
-	it('returns light when dark mode is disabled', async () => {
+	test('returns light when dark mode is disabled', async t => {
+		const {getCurrentMode, darkMode} = await setup(t);
+
 		darkMode.isEnabled.mock.mockImplementation(async () => false);
 
-		assert.equal(await getCurrentMode(), 'light');
+		t.assert.strictEqual(await getCurrentMode(), 'light');
 	});
 });

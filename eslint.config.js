@@ -7,9 +7,10 @@ export default defineConfig([
 	...xo(),
 
 	{
+		files: ['test/**/*'],
 		rules: {
-			// TODO: Fix these
-			'node-test/prefer-context-mock': 'off',
+			'jsdoc/require-description': 'off',
+			'jsdoc/require-param-description': 'off',
 		},
 	},
 ]);

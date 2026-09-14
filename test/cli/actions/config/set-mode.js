@@ -1,77 +1,80 @@
-import assert from 'node:assert/strict';
-import {
-	beforeEach,
-	describe,
-	it,
-	mock,
-} from 'node:test';
+import {suite, test} from 'node:test';
 
-const consola = {success: mock.fn()};
-mock.module('consola', {namedExports: {consola}});
+/**
+@param {import('node:test').TestContext} t
+*/
+async function setup(t) {
+	const consola = {success: t.mock.fn()};
+	t.mock.module('consola', {exports: {consola}});
 
-const macTerminal = {
-	assertTerminalProfile: mock.fn(),
-	setTerminalProfile: mock.fn(),
-};
-mock.module('mac-terminal', {namedExports: macTerminal});
+	const macTerminal = {
+		assertTerminalProfile: t.mock.fn(),
+		setTerminalProfile: t.mock.fn(),
+	};
+	t.mock.module('mac-terminal', {exports: macTerminal});
 
-const config = {set: mock.fn()};
-const library = {
-	getConfig: mock.fn(async () => config),
-	getCurrentMode: mock.fn(),
-};
-mock.module('#library', {namedExports: library});
+	const config = {set: t.mock.fn()};
+	const library = {
+		getConfig: t.mock.fn(async () => config),
+		getCurrentMode: t.mock.fn(),
+	};
+	t.mock.module('#library', {exports: library});
 
-const {default: setMode} = await import('../../../../source/cli/actions/config/set-mode.js');
+	// https://github.com/nodejs/node/issues/59163
+	const {default: setMode} = await import(`../../../../source/cli/actions/config/set-mode.js?test=${t.name}`);
 
-describe('setMode', () => {
-	beforeEach(() => {
-		consola.success.mock.resetCalls();
-		macTerminal.assertTerminalProfile.mock.resetCalls();
-		macTerminal.setTerminalProfile.mock.resetCalls();
-		library.getCurrentMode.mock.resetCalls();
-		library.getConfig.mock.resetCalls();
-		config.set.mock.resetCalls();
-	});
+	return {
+		setMode, consola, config, library, macTerminal,
+	};
+}
 
-	it('saves the profile for the given mode', async () => {
+suite('setMode', () => {
+	test('saves profile for given mode', async t => {
+		const {setMode, config, library} = await setup(t);
+
 		library.getCurrentMode.mock.mockImplementation(async () => 'light');
 
 		await setMode({mode: 'dark', profile: 'Profile'});
 
-		assert.equal(config.set.mock.calls[0].arguments[0], 'profiles.dark');
-		assert.equal(config.set.mock.calls[0].arguments[1], 'Profile');
+		t.assert.strictEqual(config.set.mock.calls[0].arguments[0], 'profiles.dark');
+		t.assert.strictEqual(config.set.mock.calls[0].arguments[1], 'Profile');
 	});
 
-	it('asserts the terminal profile', async () => {
+	test('asserts terminal profile', async t => {
+		const {setMode, library, macTerminal} = await setup(t);
+
 		library.getCurrentMode.mock.mockImplementation(async () => 'light');
 
 		await setMode({mode: 'dark', profile: 'Profile'});
 
-		assert.equal(
+		t.assert.strictEqual(
 			macTerminal.assertTerminalProfile.mock.calls[0].arguments[0],
 			'Profile',
 		);
 	});
 
-	it('logs a success message', async () => {
+	test('logs success message', async t => {
+		const {setMode, consola, library} = await setup(t);
+
 		library.getCurrentMode.mock.mockImplementation(async () => 'light');
 
 		await setMode({mode: 'dark', profile: 'Profile'});
 
-		assert.match(
+		t.assert.match(
 			consola.success.mock.calls[0].arguments[0],
 			/saved configuration/v,
 		);
 	});
 
-	it('updates terminal profile when mode matches current mode', async () => {
+	test('updates profile when mode matches current mode', async t => {
+		const {setMode, library, macTerminal} = await setup(t);
+
 		library.getCurrentMode.mock.mockImplementation(async () => 'dark');
 
 		await setMode({mode: 'dark', profile: 'Profile'});
 
-		assert.equal(macTerminal.setTerminalProfile.mock.callCount(), 1);
-		assert.deepEqual(
+		t.assert.strictEqual(macTerminal.setTerminalProfile.mock.callCount(), 1);
+		t.assert.deepStrictEqual(
 			macTerminal.setTerminalProfile.mock.calls[0].arguments[0],
 			{
 				profile: 'Profile',
@@ -80,20 +83,24 @@ describe('setMode', () => {
 		);
 	});
 
-	it('does not update terminal profile when mode differs from current mode', async () => {
+	test('doesn\'t update profile when mode doesn\'t match current mode', async t => {
+		const {setMode, library, macTerminal} = await setup(t);
+
 		library.getCurrentMode.mock.mockImplementation(async () => 'light');
 
 		await setMode({mode: 'dark', profile: 'Profile'});
 
-		assert.equal(macTerminal.setTerminalProfile.mock.callCount(), 0);
+		t.assert.strictEqual(macTerminal.setTerminalProfile.mock.callCount(), 0);
 	});
 
-	it('throws when profile is not a valid terminal profile', async () => {
+	test('throws when profile isn\'t valid', async t => {
+		const {setMode, macTerminal} = await setup(t);
+
 		macTerminal.assertTerminalProfile.mock.mockImplementation(async () => {
 			throw new Error('Invalid profile');
 		});
 
-		await assert.rejects(setMode({mode: 'dark', profile: 'Nonexistent'}), {
+		await t.assert.rejects(setMode({mode: 'dark', profile: 'Nonexistent'}), {
 			message: 'Invalid profile',
 		});
 	});

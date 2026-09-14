@@ -1,55 +1,55 @@
-import assert from 'node:assert/strict';
-import {
-	beforeEach,
-	describe,
-	it,
-	mock,
-} from 'node:test';
+import {suite, test} from 'node:test';
 
-let onModeChange;
-const darkMode = {
-	watch: mock.fn(callback => {
-		onModeChange = callback;
-	}),
-};
-mock.module('dark-mode', {defaultExport: darkMode});
+/**
+@param {import('node:test').TestContext} t
+*/
+async function setup(t) {
+	const darkMode = {watch: t.mock.fn()};
+	t.mock.module('dark-mode', {exports: {default: darkMode}});
 
-const macTerminal = {setTerminalProfile: mock.fn()};
-mock.module('mac-terminal', {namedExports: macTerminal});
+	const macTerminal = {setTerminalProfile: t.mock.fn()};
+	t.mock.module('mac-terminal', {exports: macTerminal});
 
-const config = {get: mock.fn(() => 'Profile')};
-const library = {
-	getConfig: mock.fn(async () => config),
-	getCurrentMode: mock.fn(),
-};
-mock.module('#library', {namedExports: library});
+	const config = {get: t.mock.fn(() => 'Profile')};
+	const library = {
+		getConfig: t.mock.fn(async () => config),
+		getCurrentMode: t.mock.fn(),
+	};
+	t.mock.module('#library', {exports: library});
 
-const {default: watch} = await import('../source/cli/actions/watch.js');
+	// https://github.com/nodejs/node/issues/59163
+	const {default: update} = await import(`../source/cli/actions/update.js?test=${t.name}`);
+	t.mock.module('../source/cli/actions/update.js', {exports: {default: update}});
 
-describe('watch', () => {
-	beforeEach(() => {
-		darkMode.watch.mock.resetCalls();
-		macTerminal.setTerminalProfile.mock.resetCalls();
-		library.getConfig.mock.resetCalls();
-		library.getCurrentMode.mock.resetCalls();
-		config.get.mock.resetCalls();
-	});
+	// https://github.com/nodejs/node/issues/59163
+	const {default: watch} = await import(`../source/cli/actions/watch.js?test=${t.name}`);
 
-	it('watches for appearance changes', async () => {
+	return {
+		watch, darkMode, config, macTerminal,
+	};
+}
+
+suite('watch', () => {
+	test('watches for appearance changes', async t => {
+		const {watch, darkMode} = await setup(t);
+
 		await watch();
 
-		assert.equal(darkMode.watch.mock.callCount(), 1);
+		t.assert.strictEqual(darkMode.watch.mock.callCount(), 1);
 	});
 
-	it('updates the terminal profile when dark mode is enabled', async () => {
+	test('updates the terminal profile when dark mode is enabled', async t => {
+		const {watch, darkMode, macTerminal} = await setup(t);
+
 		await watch();
 
+		const [onModeChange] = darkMode.watch.mock.calls[0].arguments;
 		onModeChange(true);
 		await new Promise(resolve => {
 			setImmediate(resolve);
 		});
 
-		assert.deepEqual(
+		t.assert.deepStrictEqual(
 			macTerminal.setTerminalProfile.mock.calls[0].arguments[0],
 			{
 				profile: 'Profile',
@@ -58,14 +58,17 @@ describe('watch', () => {
 		);
 	});
 
-	it('updates the terminal profile when dark mode is disabled', async () => {
+	test('updates the terminal profile when dark mode is disabled', async t => {
+		const {watch, darkMode, config} = await setup(t);
+
 		await watch();
 
+		const [onModeChange] = darkMode.watch.mock.calls[0].arguments;
 		onModeChange(false);
 		await new Promise(resolve => {
 			setImmediate(resolve);
 		});
 
-		assert.equal(config.get.mock.calls[0].arguments[0], 'profiles.light');
+		t.assert.strictEqual(config.get.mock.calls[0].arguments[0], 'profiles.light');
 	});
 });

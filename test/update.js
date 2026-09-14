@@ -1,38 +1,37 @@
-import assert from 'node:assert/strict';
-import {
-	beforeEach,
-	describe,
-	it,
-	mock,
-} from 'node:test';
+import {suite, test} from 'node:test';
 
-const macTerminal = {setTerminalProfile: mock.fn()};
-mock.module('mac-terminal', {namedExports: macTerminal});
+/**
+@param {import('node:test').TestContext} t
+*/
+async function setup(t) {
+	const macTerminal = {setTerminalProfile: t.mock.fn()};
+	t.mock.module('mac-terminal', {exports: macTerminal});
 
-const config = {get: mock.fn()};
-const library = {
-	getConfig: mock.fn(async () => config),
-	getCurrentMode: mock.fn(),
-};
-mock.module('#library', {namedExports: library});
+	const config = {get: t.mock.fn()};
+	const library = {
+		getConfig: t.mock.fn(async () => config),
+		getCurrentMode: t.mock.fn(),
+	};
+	t.mock.module('#library', {exports: library});
 
-const {default: update} = await import('../source/cli/actions/update.js');
+	// https://github.com/nodejs/node/issues/59163
+	const {default: update} = await import(`../source/cli/actions/update.js?test=${t.name}`);
 
-describe('update', () => {
-	beforeEach(() => {
-		macTerminal.setTerminalProfile.mock.resetCalls();
-		library.getCurrentMode.mock.resetCalls();
-		library.getConfig.mock.resetCalls();
-		config.get.mock.resetCalls();
-	});
+	return {
+		update, config, library, macTerminal,
+	};
+}
 
-	it('sets the terminal profile for the given mode', async () => {
+suite('update', () => {
+	test('sets profile for given mode', async t => {
+		const {update, config, macTerminal} = await setup(t);
+
 		config.get.mock.mockImplementation(() => 'Profile');
 
 		await update({mode: 'dark'});
 
-		assert.equal(config.get.mock.calls[0].arguments[0], 'profiles.dark');
-		assert.deepEqual(
+		t.assert.strictEqual(config.get.mock.calls[0].arguments[0], 'profiles.dark');
+		t.assert.deepStrictEqual(
 			macTerminal.setTerminalProfile.mock.calls[0].arguments[0],
 			{
 				profile: 'Profile',
@@ -41,21 +40,25 @@ describe('update', () => {
 		);
 	});
 
-	it('uses current mode when mode is not provided', async () => {
+	test('uses current mode when no mode provided', async t => {
+		const {update, config, library} = await setup(t);
+
 		library.getCurrentMode.mock.mockImplementation(async () => 'light');
 		config.get.mock.mockImplementation(() => 'Profile');
 
 		await update({});
 
-		assert.equal(library.getCurrentMode.mock.callCount(), 1);
-		assert.equal(config.get.mock.calls[0].arguments[0], 'profiles.light');
+		t.assert.strictEqual(library.getCurrentMode.mock.callCount(), 1);
+		t.assert.strictEqual(config.get.mock.calls[0].arguments[0], 'profiles.light');
 	});
 
-	it('does not call getCurrentMode when mode is provided', async () => {
+	test('doesn\'t use current mode when mode provided', async t => {
+		const {update, config, library} = await setup(t);
+
 		config.get.mock.mockImplementation(() => 'Profile');
 
 		await update({mode: 'dark'});
 
-		assert.equal(library.getCurrentMode.mock.callCount(), 0);
+		t.assert.strictEqual(library.getCurrentMode.mock.callCount(), 0);
 	});
 });

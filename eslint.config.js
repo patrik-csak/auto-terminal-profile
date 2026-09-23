@@ -1,9 +1,7 @@
-import {defineConfig, globalIgnores} from 'eslint/config';
+import {defineConfig} from 'eslint/config';
 import xo from 'eslint-config-xo';
 
 export default defineConfig([
-	globalIgnores(['package-lock.json']),
-
 	...xo(),
 
 	{

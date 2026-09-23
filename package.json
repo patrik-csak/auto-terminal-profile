@@ -30,13 +30,9 @@
     "darwin"
   ],
   "scripts": {
-    "lint:check": "eslint",
-    "lint:fix": "eslint --fix",
-    "quality:check": "npm run lint:check && npm run unused:check",
-    "quality:fix": "npm run lint:fix",
+    "lint": "eslint && knip",
     "test": "node --experimental-test-module-mocks --test",
-    "test:coverage": "npm run test -- --experimental-test-coverage",
-    "unused:check": "knip"
+    "test:coverage": "npm run test -- --experimental-test-coverage"
   },
   "files": [
     "source"
@@ -57,7 +53,7 @@
   },
   "devDependencies": {
     "eslint": "^10.8.0",
-    "eslint-config-xo": "^2.0.0",
+    "eslint-config-xo": "^4.0.0",
     "knip": "^6.29.0"
   },
   "allowScripts": {

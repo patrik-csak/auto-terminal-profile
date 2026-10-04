@@ -5,21 +5,21 @@ import {suite, test} from 'node:test';
 */
 async function setup(t) {
 	const darkMode = {watch: t.mock.fn()};
-	t.mock.module('dark-mode', {exports: {default: darkMode}});
+	t.mock.module('dark-mode', {defaultExport: darkMode});
 
 	const macTerminal = {setTerminalProfile: t.mock.fn()};
-	t.mock.module('mac-terminal', {exports: macTerminal});
+	t.mock.module('mac-terminal', {namedExports: macTerminal});
 
 	const config = {get: t.mock.fn(() => 'Profile')};
 	const library = {
 		getConfig: t.mock.fn(async () => config),
 		getCurrentMode: t.mock.fn(),
 	};
-	t.mock.module('#library', {exports: library});
+	t.mock.module('#library', {namedExports: library});
 
 	// https://github.com/nodejs/node/issues/59163
 	const {default: update} = await import(`../source/cli/actions/update.js?test=${t.name}`);
-	t.mock.module('../source/cli/actions/update.js', {exports: {default: update}});
+	t.mock.module('../source/cli/actions/update.js', {defaultExport: update});
 
 	// https://github.com/nodejs/node/issues/59163
 	const {default: watch} = await import(`../source/cli/actions/watch.js?test=${t.name}`);

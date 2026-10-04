@@ -7,14 +7,14 @@ async function setup(t) {
 	const console = {
 		log: t.mock.fn(),
 	};
-	t.mock.module('node:console', {exports: {default: console}});
+	t.mock.module('node:console', {defaultExport: console});
 
 	const config = {get: t.mock.fn()};
 	const library = {
 		getConfig: t.mock.fn(async () => config),
 		modes: ['dark', 'light'],
 	};
-	t.mock.module('#library', {exports: library});
+	t.mock.module('#library', {namedExports: library});
 	// https://github.com/nodejs/node/issues/59163
 	const {default: show} = await import(`../../../../source/cli/actions/config/show.js?test=${t.name}`);
 

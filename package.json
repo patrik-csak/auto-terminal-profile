@@ -14,16 +14,16 @@
     "auto-terminal-profile": "./source/cli.js"
   },
   "engines": {
-    "node": ">=22 <=24"
+    "node": "22 - 26"
   },
   "devEngines": {
     "runtime": {
       "name": "node",
-      "version": "22"
+      "version": "22 - 26"
     },
     "packageManager": {
       "name": "npm",
-      "version": "11.16 - 12"
+      "version": "12"
     }
   },
   "os": [

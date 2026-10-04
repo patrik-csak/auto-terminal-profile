@@ -5,20 +5,20 @@ import {suite, test} from 'node:test';
 */
 async function setup(t) {
 	const consola = {success: t.mock.fn()};
-	t.mock.module('consola', {exports: {consola}});
+	t.mock.module('consola', {namedExports: {consola}});
 
 	const macTerminal = {
 		assertTerminalProfile: t.mock.fn(),
 		setTerminalProfile: t.mock.fn(),
 	};
-	t.mock.module('mac-terminal', {exports: macTerminal});
+	t.mock.module('mac-terminal', {namedExports: macTerminal});
 
 	const config = {set: t.mock.fn()};
 	const library = {
 		getConfig: t.mock.fn(async () => config),
 		getCurrentMode: t.mock.fn(),
 	};
-	t.mock.module('#library', {exports: library});
+	t.mock.module('#library', {namedExports: library});
 
 	// https://github.com/nodejs/node/issues/59163
 	const {default: setMode} = await import(`../../../../source/cli/actions/config/set-mode.js?test=${t.name}`);

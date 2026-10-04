@@ -1,6 +1,6 @@
 {
   "name": "auto-terminal-profile",
-  "version": "8.2.0",
+  "version": "8.2.1",
   "description": "Automatically switch macOS Terminal profile when system dark / light mode changes",
   "license": "MIT",
   "repository": "github:patrik-csak/auto-terminal-profile",

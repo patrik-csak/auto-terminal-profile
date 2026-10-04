@@ -9,7 +9,6 @@ for (const mode of modes) {
 	command.addCommand(setMode(mode));
 }
 
-// eslint-disable-next-line unicorn/no-top-level-side-effects
 command.action(actions.config.set);
 
 export default command;

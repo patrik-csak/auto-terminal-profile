@@ -6,7 +6,7 @@ import {getConfig, getCurrentMode} from '#library';
 
  @param {{mode?: 'dark' | 'light'}} parameters - Optional appearance mode. Defaults to current mode.
  @returns {Promise<void>}
- */
+*/
 export default async function update({mode}) {
 	mode ??= await getCurrentMode();
 

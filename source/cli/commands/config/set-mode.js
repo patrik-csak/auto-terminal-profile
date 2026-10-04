@@ -5,7 +5,7 @@ import * as actions from '#cli/actions';
  Make set mode command
 
  @param {'dark' | 'light'} mode - Appearance mode
- */
+*/
 export default function setMode(mode) {
 	return new Command(mode)
 		.description(`set terminal profile for ${mode}`)

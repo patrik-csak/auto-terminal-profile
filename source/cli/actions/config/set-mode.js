@@ -8,7 +8,7 @@ import {getConfig, getCurrentMode} from '#library';
  @param {{mode: 'dark' | 'light', profile: string}} parameters - Mode and profile to save
  @throws {Error}
  @returns {Promise<void>}
- */
+*/
 export default async function setMode({mode, profile}) {
 	await assertTerminalProfile(profile);
 

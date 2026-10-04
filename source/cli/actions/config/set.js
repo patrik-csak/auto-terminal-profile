@@ -6,7 +6,7 @@ import {getConfig, getCurrentMode, modes} from '#library';
  Prompt for and save Terminal profiles for both appearance modes
 
  @returns {Promise<void>}
- */
+*/
 export default async function set() {
 	const config = await getConfig();
 	const profiles = await getTerminalProfiles();

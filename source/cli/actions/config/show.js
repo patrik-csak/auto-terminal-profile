@@ -7,7 +7,7 @@ import {getConfig, modes} from '#library';
  Show the configured Terminal profile for both appearance modes
 
  @returns {Promise<void>}
- */
+*/
 export default async function show() {
 	const config = await getConfig();
 

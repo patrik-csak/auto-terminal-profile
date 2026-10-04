@@ -20,10 +20,6 @@
     "runtime": {
       "name": "node",
       "version": "22 - 26"
-    },
-    "packageManager": {
-      "name": "npm",
-      "version": "12"
     }
   },
   "os": [

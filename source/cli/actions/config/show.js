@@ -4,9 +4,9 @@ import {styleText} from 'node:util';
 import {getConfig, modes} from '#library';
 
 /**
- Show the configured Terminal profile for both appearance modes
+Show the configured Terminal profile for both appearance modes
 
- @returns {Promise<void>}
+@returns {Promise<void>}
 */
 export default async function show() {
 	const config = await getConfig();

@@ -42,7 +42,7 @@
   ],
   "dependencies": {
     "commander": "^15.0.0",
-    "conf": "^15.0.2",
+    "conf": "^16.0.0",
     "consola": "^3.4.2",
     "dark-mode": "^5.0.0",
     "mac-terminal": "^6.1.0"

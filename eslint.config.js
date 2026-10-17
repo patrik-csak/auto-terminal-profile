@@ -1,7 +1,8 @@
-import {defineConfig} from 'eslint/config';
+import {defineConfig, globalIgnores} from 'eslint/config';
 import xo from 'eslint-config-xo';
 
 export default defineConfig([
+	globalIgnores(['distribution']),
 	...xo(),
 	{
 		rules: {
@@ -14,6 +15,8 @@ export default defineConfig([
 		rules: {
 			'jsdoc/require-description': 'off',
 			'jsdoc/require-param-description': 'off',
+			// Incompatible with es2022 TypeScript target
+			'require-unicode-regexp': 'off',
 		},
 	},
 ]);

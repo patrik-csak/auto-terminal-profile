@@ -6,12 +6,8 @@
   "repository": "github:patrik-csak/auto-terminal-profile",
   "author": "Patrik Csak <p@trikcsak.com> (https://patrikcsak.com)",
   "type": "module",
-  "imports": {
-    "#*": "./source/*/index.js",
-    "#package-json": "./package.json"
-  },
   "bin": {
-    "auto-terminal-profile": "./source/cli.js"
+    "auto-terminal-profile": "./distribution/cli.js"
   },
   "engines": {
     "node": "22 - 26"
@@ -26,12 +22,16 @@
     "darwin"
   ],
   "scripts": {
-    "lint": "eslint && knip",
+    "prebuild": "rm -rf distribution",
+    "build": "tsc",
+    "postbuild": "chmod u+x distribution/cli.js",
+    "lint": "tsc --noEmit && tsc --project test/tsconfig.json && eslint && knip",
+    "prepack": "npm run build",
     "test": "node --experimental-test-module-mocks --test",
     "test:coverage": "npm run test -- --experimental-test-coverage"
   },
   "files": [
-    "source"
+    "distribution"
   ],
   "keywords": [
     "macos",
@@ -48,9 +48,15 @@
     "mac-terminal": "^6.1.0"
   },
   "devDependencies": {
+    "@commander-js/extra-typings": "^15.0.0",
+    "@tsconfig/node-ts": "^23.6.4",
+    "@tsconfig/node22": "^22.0.6",
+    "@tsconfig/strictest": "^2.0.8",
+    "@types/node": "^22.20.5",
     "eslint": "^10.8.0",
     "eslint-config-xo": "^6.0.0",
-    "knip": "^6.29.0"
+    "knip": "^6.29.0",
+    "typescript": "^6.0.3"
   },
   "allowScripts": {
     "unrs-resolver": false

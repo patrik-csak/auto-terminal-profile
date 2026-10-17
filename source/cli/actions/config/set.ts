@@ -1,16 +1,22 @@
 import {consola} from 'consola';
 import {getTerminalProfiles, setTerminalProfile} from 'mac-terminal';
-import {getConfig, getCurrentMode, modes} from '#library';
+import {
+	getConfig,
+	getCurrentMode,
+	modes,
+	type Mode,
+} from '../../../library/index.ts';
 
 /**
 Prompt for and save Terminal profiles for both appearance modes
-
-@returns {Promise<void>}
 */
 export default async function set() {
 	const config = await getConfig();
 	const profiles = await getTerminalProfiles();
-	const newProfiles = {};
+	const newProfiles: Record<Mode, string> = {
+		dark: '',
+		light: '',
+	};
 
 	for (const mode of modes) {
 		// eslint-disable-next-line no-await-in-loop

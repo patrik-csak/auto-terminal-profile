@@ -1,12 +1,10 @@
 import darkMode from 'dark-mode';
-import update from './update.js';
+import update from './update.ts';
 
 /**
 Watch for appearance mode changes and update the Terminal profile
-
-@returns {Promise<void>}
 */
-export default async function watch() {
+export default function watch() {
 	darkMode.watch(isDarkMode => {
 		try {
 			update({mode: isDarkMode ? 'dark' : 'light'});

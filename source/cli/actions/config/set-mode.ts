@@ -1,15 +1,11 @@
 import {consola} from 'consola';
 import {assertTerminalProfile, setTerminalProfile} from 'mac-terminal';
-import {getConfig, getCurrentMode} from '#library';
+import {getConfig, getCurrentMode, type Mode} from '../../../library/index.ts';
 
 /**
 Set the Terminal profile for an appearance mode
-
-@param {{mode: 'dark' | 'light', profile: string}} parameters - Mode and profile to save
-@throws {Error}
-@returns {Promise<void>}
 */
-export default async function setMode({mode, profile}) {
+export default async function setMode({mode, profile}: {mode: Mode; profile: string}) {
 	await assertTerminalProfile(profile);
 
 	const config = await getConfig();

@@ -1,12 +1,10 @@
 // eslint-disable-next-line n/prefer-global/console
 import console from 'node:console';
 import {styleText} from 'node:util';
-import {getConfig, modes} from '#library';
+import {getConfig, modes} from '../../../library/index.ts';
 
 /**
 Show the configured Terminal profile for both appearance modes
-
-@returns {Promise<void>}
 */
 export default async function show() {
 	const config = await getConfig();

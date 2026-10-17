@@ -1,7 +1,7 @@
 import {Command} from 'commander';
-import setMode from './set-mode.js';
-import * as actions from '#cli/actions';
-import {modes} from '#library';
+import * as actions from '../../actions/index.ts';
+import {modes} from '../../../library/index.ts';
+import setMode from './set-mode.ts';
 
 const command = new Command('set').description('update configuration');
 

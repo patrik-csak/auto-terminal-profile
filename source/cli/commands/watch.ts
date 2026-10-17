@@ -1,5 +1,5 @@
 import {Command} from 'commander';
-import * as actions from '#cli/actions';
+import * as actions from '../actions/index.ts';
 
 export default new Command('watch')
 	.description('watch for appearance mode changes and update the terminal profile')

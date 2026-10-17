@@ -1,13 +1,11 @@
 import {setTerminalProfile} from 'mac-terminal';
-import {getConfig, getCurrentMode} from '#library';
+import {getConfig, getCurrentMode, type Mode} from '../../library/index.ts';
 
 /**
 Update the Terminal profile for an appearance mode
-
-@param {{mode?: 'dark' | 'light'}} parameters - Optional appearance mode. Defaults to current mode.
-@returns {Promise<void>}
 */
-export default async function update({mode}) {
+export default async function update(parameters?: {mode?: Mode}) {
+	let {mode} = parameters ?? {};
 	mode ??= await getCurrentMode();
 
 	const config = await getConfig();

@@ -1,6 +1,6 @@
 import {Argument, Command} from 'commander';
-import * as actions from '#cli/actions';
-import {modes} from '#library';
+import * as actions from '../actions/index.ts';
+import {modes} from '../../library/index.ts';
 
 export default new Command('update')
 	.description('update terminal profile based on the mode')

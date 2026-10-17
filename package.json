@@ -25,7 +25,7 @@
     "prebuild": "rm -rf distribution",
     "build": "tsc",
     "postbuild": "chmod u+x distribution/cli.js",
-    "lint": "tsc --noEmit && tsc --project test/tsconfig.json && eslint && knip",
+    "lint": "tsc --noEmit && tsc --project test/tsconfig.json && eslint --cache --concurrency=auto && knip",
     "prepack": "npm run build",
     "test": "node --experimental-test-module-mocks --test",
     "test:coverage": "npm run test -- --experimental-test-coverage"

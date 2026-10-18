@@ -6,10 +6,9 @@ Watch for appearance mode changes and update the Terminal profile
 */
 export default function watch() {
 	darkMode.watch(isDarkMode => {
-		try {
-			update({mode: isDarkMode ? 'dark' : 'light'});
-		} catch (error) {
-			console.error(error);
-		}
+		update({mode: isDarkMode ? 'dark' : 'light'})
+			.catch((error: unknown) => {
+				console.error(error);
+			});
 	});
 }

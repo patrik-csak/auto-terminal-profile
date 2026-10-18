@@ -12,7 +12,7 @@ async function setup(t: TestContext) {
 	t.mock.module('dark-mode', {defaultExport: darkMode});
 
 	// https://github.com/nodejs/node/issues/59163
-	const update = t.mock.fn<typeof updateModule.default>();
+	const update = t.mock.fn<typeof updateModule.default>(async () => {/* empty */});
 	t.mock.module('../../../source/cli/actions/update.ts', {defaultExport: update});
 
 	// https://github.com/nodejs/node/issues/59163

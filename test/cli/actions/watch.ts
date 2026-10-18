@@ -18,7 +18,7 @@ async function setup(t: TestContext) {
 	// https://github.com/nodejs/node/issues/59163
 	const {default: watch} = await import(`../../../source/cli/actions/watch.ts?test=${t.name}`) as typeof watchModule;
 
-	watch();
+	await watch();
 	const darkModeWatchCall = darkMode.watch.mock.calls[0];
 	t.assert.ok(darkModeWatchCall);
 	const [darkModeWatchCallback] = darkModeWatchCall.arguments;
@@ -27,6 +27,13 @@ async function setup(t: TestContext) {
 }
 
 suite('watch', () => {
+	test('updates on start', async (t: TestContext) => {
+		const {update} = await setup(t);
+
+		t.assert.strictEqual(update.mock.callCount(), 1);
+		t.assert.deepStrictEqual(update.mock.calls[0]?.arguments, []);
+	});
+
 	test('watches for appearance changes', async (t: TestContext) => {
 		const {darkMode} = await setup(t);
 
@@ -39,7 +46,7 @@ suite('watch', () => {
 		darkModeWatchCallback(true);
 
 		t.assert.deepStrictEqual(
-			update.mock.calls[0]?.arguments[0],
+			update.mock.calls[1]?.arguments[0],
 			{mode: 'dark'},
 		);
 	});
@@ -50,7 +57,7 @@ suite('watch', () => {
 		darkModeWatchCallback(false);
 
 		t.assert.deepStrictEqual(
-			update.mock.calls[0]?.arguments[0],
+			update.mock.calls[1]?.arguments[0],
 			{mode: 'light'},
 		);
 	});

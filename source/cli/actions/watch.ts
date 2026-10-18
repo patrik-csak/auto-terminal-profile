@@ -1,14 +1,18 @@
 import darkMode from 'dark-mode';
 import update from './update.ts';
 
+function handleError(error: unknown) {
+	console.error(error);
+}
+
 /**
-Watch for appearance mode changes and update the Terminal profile
+Update the Terminal profile and watch for appearance mode changes
 */
-export default function watch() {
+export default async function watch() {
+	await update().catch(handleError);
+
 	darkMode.watch(isDarkMode => {
 		update({mode: isDarkMode ? 'dark' : 'light'})
-			.catch((error: unknown) => {
-				console.error(error);
-			});
+			.catch(handleError);
 	});
 }

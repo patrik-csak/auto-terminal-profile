@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased](https://github.com/patrik-csak/auto-terminal-profile/compare/v8.2.2...HEAD)
 
+### Added
+
+- Update the profile on watch start
+
 ### Fixed
 
 - Unhandled error during profile update

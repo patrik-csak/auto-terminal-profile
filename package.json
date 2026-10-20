@@ -46,7 +46,7 @@
     "consola": "^3.4.2",
     "dark-mode": "^5.0.0",
     "exit-hook": "^5.1.0",
-    "mac-terminal": "^6.1.0"
+    "mac-terminal": "^6.2.1"
   },
   "devDependencies": {
     "@commander-js/extra-typings": "^15.0.0",

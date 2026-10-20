@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Unhandled error during profile update
 - Watcher process left running after `watch` is stopped
+- `watch` not updating profile when run as child process of Terminal.app
 
 ## [8.2.2](https://github.com/patrik-csak/auto-terminal-profile/compare/v8.2.1...v8.2.2) – 2026-10-10
 

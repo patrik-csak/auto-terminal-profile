@@ -2,7 +2,7 @@
 
 Automatically switch [Terminal](https://en.wikipedia.org/wiki/Terminal_%28macOS%29) profiles when macOS [dark/light mode](https://support.apple.com/guide/mac-help/use-a-light-or-dark-appearance-mchl52e1c2d2/mac) changes
 
-![auto-terminal-profile demonstration screen recording](./documentation/demo.gif)
+![auto-terminal-profile demonstration screen recording](./documentation/screen-recording.avif)
 
 ## Usage
 

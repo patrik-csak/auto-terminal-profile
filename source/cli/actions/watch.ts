@@ -10,10 +10,10 @@ function handleError(error: unknown) {
 Update the Terminal profile and watch for appearance mode changes
 */
 export default async function watch() {
-	await update().catch(handleError);
+	void update().catch(handleError);
 
 	const watcher = darkMode.watch(isDarkMode => {
-		update({mode: isDarkMode ? 'dark' : 'light'})
+		void update({mode: isDarkMode ? 'dark' : 'light'})
 			.catch(handleError);
 	});
 

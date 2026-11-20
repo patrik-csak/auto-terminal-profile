@@ -25,7 +25,11 @@ async function setup(t: TestContext) {
 	const {default: setMode} = await import(`../../../../source/cli/actions/config/set-mode.ts?test=${t.name}`) as typeof setModeModule;
 
 	return {
-		config, consola, library, macTerminal, setMode,
+		config,
+		consola,
+		library,
+		macTerminal,
+		setMode,
 	};
 }
 

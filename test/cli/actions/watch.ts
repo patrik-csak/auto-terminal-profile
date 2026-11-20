@@ -29,7 +29,11 @@ async function setup(t: TestContext) {
 	const [darkModeWatchCallback] = darkModeWatchCall.arguments;
 
 	return {
-		darkMode, darkModeWatchCallback, exitHook, update, watcher,
+		darkMode,
+		darkModeWatchCallback,
+		exitHook,
+		update,
+		watcher,
 	};
 }
 
